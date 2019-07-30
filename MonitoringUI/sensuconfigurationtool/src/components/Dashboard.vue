@@ -3,28 +3,19 @@
     <div id="header">
     </div>
     <div id="body">
-      <template v-if="$route.matched.length">
-      </template>
-      <template v-else>
-        <div>
-          This is the dashboard homepage.
-          <router-link v-if="loggedIn" to="/logout">Log out</router-link>
-
-        </div>
-      </template>
+      This is the point where the user should have selected a store/agent.
+        <h4> Available Agents </h4>
+        <ul id="example-1">
+          <li v-for="item in items" v-bind:key="item.id">
+            <agentCard
+            v-bind:agent="item"
+            />
+          </li>
+        </ul>
+        <router-link to="/logout">Log out</router-link>
     </div>
     <div id="footer">
     </div>
-    This is the point where the user should have selected a store/agent.
-          <h4> Available Agents </h4>
-          <ul id="example-1">
-            <li v-for="item in items" v-bind:key="item.id">
-              <agentCard
-               v-bind:agent="item"
-              />
-            </li>
-          </ul>
-    <router-link v-if="loggedIn" to="/logout">Log out</router-link>
   </div>
 </template>
 
@@ -33,9 +24,9 @@ import auth from '../auth'
 import agentCard from './component-items/agentCard'
 
   export default {
+    props: ['loggedIn'],
     data () {
       return {
-        loggedIn: auth.loggedIn(),
         items: [
           {
             name : 1,
@@ -58,15 +49,8 @@ import agentCard from './component-items/agentCard'
           ]
       }
     },
-
-    created () {
-      auth.onChange = loggedIn => {
-        this.loggedIn = loggedIn
-      }
-    },
     components:{
       agentCard
     },
-    props: ['loggedIn']
   }
 </script>

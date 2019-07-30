@@ -4,6 +4,7 @@
 
 <script>
 import Main from './Main'
+import auth from '../auth'
 
 export default {
   data () {
