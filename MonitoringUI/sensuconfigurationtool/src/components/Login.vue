@@ -20,7 +20,7 @@ export default {
   data () {
     return {
       email: 'joe@example.com',
-      pass: '',
+      pass: 'password1',
       error: false
     }
   },
