@@ -5,7 +5,7 @@
         <Navigation/>
       </div>
 
-      <div id="routingContainer">
+      <div id="routingContainer" class="container">
         <template v-if="$route.matched.length">
           <router-view></router-view>
         </template>
@@ -48,5 +48,7 @@ export default {
 </script>
 
 <style>
-
+  .container{
+    margin: 30px;
+  }
 </style>

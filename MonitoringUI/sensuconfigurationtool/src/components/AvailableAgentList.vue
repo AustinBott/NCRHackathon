@@ -5,8 +5,8 @@
     <div id="body" class = "container">
       This is the point where the user should have selected a store/agent.
         <h4> Available Agents </h4>
-        <div class=flex-container>
-        <div v-for="item in items" v-bind:key="item.name" v-on:click="navigateToDashboard(item.name)">
+        <div class ="flex-container">
+        <div class= "card-list" v-for="item in items" v-bind:key="item.name" v-on:click="navigateToDashboard(item.name)">
             <agentCard
             v-bind:agent="item" class="card"
             />
@@ -83,15 +83,19 @@ import agentCard from './component-items/agentCard'
 <style scoped>
 
   .card{
-    margin: 5px;
     width: 15em;
   }
+
+  .card-list{
+    margin: 10px 15px 10px 0px;
+  }
+
   .flex-container{
     display: flex;
     max-width: 100%;
-    margin: 10px;
+    margin: 10px 0px;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: left;
   }
 
   .container{
