@@ -1,5 +1,5 @@
 <template>
-  <Main />
+  <Main :loggedIn="loggedIn" />
 </template>
 
 <script>
@@ -17,7 +17,9 @@ export default {
   },
   created () {
     auth.onChange = loggedIn => {
-      this.loggedIn = loggedIn
+      this.loggedIn = loggedIn;
+      console.log('changing login status', loggedIn);
+
     }
   }
 }
