@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import { MdButton, MdContent, MdTabs } from 'vue-material/dist/components'
+import { MdButton, MdContent, MdTabs, MdCard, MdField} from 'vue-material/dist/components'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 
-Vue.use(MdButton)
 Vue.use(MdContent)
 Vue.use(MdTabs)
 Vue.use(VueRouter)
+Vue.use(MdCard)
+Vue.use(MdField)
+Vue.use(MdButton)
 
 Vue.config.productionTip = false
 

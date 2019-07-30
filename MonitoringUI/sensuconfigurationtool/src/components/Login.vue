@@ -1,16 +1,47 @@
 <template>
-  <div>
-    <h2>Login</h2>
-    <p v-if="$route.query.redirect">
-      You need to login first.
-    </p>
-    <form @submit.prevent="login">
-      <label><input v-model="email" placeholder="email"></label>
-      <label><input v-model="pass" placeholder="password" type="password"></label> (hint: password1)<br>
-      <button type="submit">login</button>
-      <p v-if="error" class="error">Bad login information</p>
-    </form>
-  </div>
+    <div>
+        <p v-if="$route.query.redirect">
+            You need to login first.
+        </p>
+        <form novalidate class="md-layout" @submit.prevent="login">
+            <md-card class="md-layout-item md-size-50 md-small-size-100">
+
+                <md-card-header>
+                    <div class="md-title">Login</div>
+                </md-card-header>
+
+                <md-card-content>
+                    <div class="md-layout md-gutter">
+                        <div class="md-layout-item md-small-size-100">
+                            <md-field>
+                                <label for="email">E-Mail</label>
+                                <md-input name="email" id="email" autocomplete="email" v-model="email" placeholder="email" />
+                            </md-field>
+                        </div>
+
+                        <div class="md-layout-item md-small-size-100">
+                            <md-field>
+                                <label for="password">
+                                    Password
+                                    <md-input v-model="pass" placeholder="password" type="password" />
+                                </label>
+                            </md-field>
+                        </div>
+
+                        <md-card-actions>
+                            <md-button type="submit">login</md-button>
+                        </md-card-actions>
+
+                    </div>
+                    <div class="md-layout md-gutter">
+                        <div class="md-layout-item md-small-size-100">
+                            <p v-if="error" class="error">Invalid Login</p>
+                        </div>
+                    </div>
+                </md-card-content>
+            </md-card>
+        </form>
+    </div>
 </template>
 
 <script>
@@ -39,7 +70,16 @@ export default {
 </script>
 
 <style>
-.error {
-  color: red;
-}
+    .md-card {
+        margin: auto;
+        margin-top: 5%;
+    }
+
+    .error {
+        color: red;
+        text-decoration: underline;
+        text-decoration-color: red;
+        text-align: center
+    }
+    
 </style>
