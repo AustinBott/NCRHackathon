@@ -34,6 +34,9 @@ export default {
       selectedAgentId: 0
     };
   },
+  created() {
+    selectedAgentId: 0
+  },
   mounted: function() {
     selectedAgentId: 0
   },
