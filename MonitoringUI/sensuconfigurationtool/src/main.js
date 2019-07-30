@@ -13,7 +13,10 @@ Vue.config.productionTip = false
 
 import auth from './auth'
 import App from './components/App.vue'
-import Dashboard from './components/Dashboard.vue'
+import AvailableAgentList from './components/AvailableAgentList.vue'
+import AgentDashboard from './components/AgentDashboard.vue'
+import ChecksList from './components/ChecksList.vue'
+
 import Login from './components/Login.vue'
 
 function requireAuth (to, from, next) {
@@ -31,7 +34,9 @@ const router = new VueRouter({
   mode: 'history',
   base: __dirname,
   routes: [
-    { path: '/dashboard', component: Dashboard, beforeEnter: requireAuth },
+    { path: '/availableAgentList', component: AvailableAgentList, beforeEnter: requireAuth },
+    { path: '/agent/:agentId', component: AgentDashboard, beforeEnter: requireAuth },
+    { path: '/agent/checks/:agentId', component: ChecksList, beforeEnter: requireAuth },
     { path: '/login', component: Login },
     { path: '/logout',
       beforeEnter (to, from, next) {
