@@ -1,12 +1,13 @@
 <template>
   <div id="dashboard">
     This is the point where the user should have selected a store/agent.
+    <router-link v-if="loggedIn" to="/logout">Log out</router-link>
+
   </div>
 </template>
 
 <script>
   import auth from '../auth'
-  import Navigation from './Navigation'
   export default {
     data () {
       return {
@@ -14,7 +15,6 @@
       }
     },
     components: {
-      Navigation
     },
     created () {
       auth.onChange = loggedIn => {
