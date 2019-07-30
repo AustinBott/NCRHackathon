@@ -25,12 +25,10 @@
             </li>
           </ul>
     <router-link v-if="loggedIn" to="/logout">Log out</router-link>
-
   </div>
 </template>
 
 <script>
-
 import auth from '../auth'
 import agentCard from './component-items/agentCard'
 
@@ -68,6 +66,7 @@ import agentCard from './component-items/agentCard'
     },
     components:{
       agentCard
-    }
+    },
+    props: ['loggedIn']
   }
 </script>

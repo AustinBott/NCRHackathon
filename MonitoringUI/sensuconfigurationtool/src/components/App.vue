@@ -1,13 +1,25 @@
 <template>
-  <Main />
+  <Main :loggedIn="loggedIn" />
 </template>
 
 <script>
 import Main from './Main'
 
 export default {
-  components:{
-    Main,
+  data () {
+    return {
+      loggedIn: auth.loggedIn()
+    }
+  },
+  components: {
+    Main
+  },
+  created () {
+    auth.onChange = loggedIn => {
+      this.loggedIn = loggedIn;
+      console.log('changing login status', loggedIn);
+
+    }
   }
 }
 </script>

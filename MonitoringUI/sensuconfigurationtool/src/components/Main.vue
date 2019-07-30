@@ -11,7 +11,7 @@
         </template>
         <template v-else>
           <div>
-            <Dashboard v-if="loggedIn" />
+            <Dashboard :loggedIn="loggedIn" v-if="loggedIn" />
             <Login v-if="!loggedIn" />
           </div>
         </template>
@@ -23,27 +23,17 @@
 </template>
 
 <script>
-import auth from '../auth'
 import Dashboard from './Dashboard'
 import Login from './Login'
 import Navigation from "./Navigation"
 
 export default {
-  data () {
-    return {
-      loggedIn: auth.loggedIn()
-    }
-  },
+  props: ['loggedIn'],
   components: {
       Dashboard,
       Login,
       Navigation
   },
-  created () {
-    auth.onChange = loggedIn => {
-      this.loggedIn = loggedIn
-    }
-  }
 }
 </script>
 
