@@ -28,16 +28,27 @@ namespace SentwoAPI.Controllers
         {
             var ndexRespons = _client.IndexDocument((TimeStampedEntry)entry);
 
-            //return CreatedAtAction(entry.EntityId + entry.MetricTitle, entry);
-            return null;
+            return CreatedAtAction(entry.EntityId + entry.MetricTitle, entry);
         }
 
-        //[HttpGet("{name_space}/{entityId}/{metricTitle}")]
-        //public async Task<ActionResult<TodoItem>> GetLastEntry(string name_space, string entityId, string metricTitle)
-        //{
-        //    // [TODO]
-        //    return;
-        //}
+        [HttpGet("{name_space}/{entityId}/{metricTitle}")]
+        public async Task<ActionResult<TimeStampedEntry>> GetLastEntry(string name_space, string entityId, string metricTitle)
+        {
+            var searchResponse = _client.Search<TimeStampedEntry>(s => s
+                .Size(1)
+                .Sort(ss => ss
+                    .Descending(p => p.Date))
+                .Query(q => q.
+                    Match(m => m.
+                        Field(f => f.Namespace).Query(name_space)) && q
+                    .Match(m => m.
+                        Field(f => f.EntityId).Query(entityId)) && q
+                    .Match(m => m.
+                        Field(f => f.MetricTitle).Query(metricTitle)))
+               );
+
+            return searchResponse.Hits.Single().Source;
+        }
 
         [HttpGet("all")]
         public List<TimeStampedEntry> GetAll()
