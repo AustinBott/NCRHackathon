@@ -4,11 +4,10 @@
     </div>
     <div id="body">
       <template v-if="$route.matched.length">
-          <router-view></router-view>
           <h1> Available Agents </h1>
           <ul id="example-1">
             <li v-for="item in items" v-bind:key="item.id">
-              {{ item }}
+              <agentCard agent="item" />
             </li>
           </ul>
       </template>
@@ -28,22 +27,30 @@
 <script>
 
 import auth from '../auth'
+import agentCard from './component-items/agentCard'
+
 export default {
     data () {
       return {
         loggedIn: auth.loggedIn(),
         items: [
           {
-            id: 1,
-            value: 'a'
+            name : 1,
+            namespace : '',
+            lastUpdate : '17:15:20',
+            label : 'eventdata'
           },
           {
-            id: 2,
-            value: 'b'
+            name : 2,
+            namespace : '',
+            lastUpdate : '17:15:20',
+            label : 'eventdata'
           },
           {
-            id: 3,
-            value: 'c'
+            name : 3,
+            namespace : '',
+            lastUpdate : '17:15:20',
+            label : 'eventdata'
           }
           ]
       }
@@ -52,6 +59,9 @@ export default {
       auth.onChange = loggedIn => {
         this.loggedIn = loggedIn
       }
+    },
+    components:{
+      agentCard
     }
   }
 </script>
