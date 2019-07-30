@@ -20,7 +20,7 @@ export default {
   data () {
     return {
       email: 'joe@example.com',
-      pass: '',
+      pass: 'password1',
       error: false
     }
   },
@@ -30,7 +30,7 @@ export default {
         if (!loggedIn) {
           this.error = true
         } else {
-          this.$router.replace(this.$route.query.redirect || '/')
+          this.$router.replace({path: 'Dashboard'})
         }
       })
     }

@@ -3,7 +3,6 @@
     <div id="header">
     </div>
     <div id="body">
-        <h1>Auth Flow</h1>
         <ul>
             <li>
                 <router-link v-if="loggedIn" to="/logout">Log out</router-link>
