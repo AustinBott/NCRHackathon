@@ -1,0 +1,14 @@
+C:\src\SentwoAPI\obj\Debug\netcoreapp2.2\SentwoAPI.csproj.CoreCompileInputs.cache
+C:\src\SentwoAPI\obj\Debug\netcoreapp2.2\SentwoAPI.AssemblyInfoInputs.cache
+C:\src\SentwoAPI\obj\Debug\netcoreapp2.2\SentwoAPI.AssemblyInfo.cs
+C:\src\SentwoAPI\bin\Debug\netcoreapp2.2\SentwoAPI.deps.json
+C:\src\SentwoAPI\bin\Debug\netcoreapp2.2\SentwoAPI.runtimeconfig.json
+C:\src\SentwoAPI\bin\Debug\netcoreapp2.2\SentwoAPI.runtimeconfig.dev.json
+C:\src\SentwoAPI\bin\Debug\netcoreapp2.2\SentwoAPI.dll
+C:\src\SentwoAPI\bin\Debug\netcoreapp2.2\SentwoAPI.pdb
+C:\src\SentwoAPI\obj\Debug\netcoreapp2.2\SentwoAPI.csprojAssemblyReference.cache
+C:\src\SentwoAPI\obj\Debug\netcoreapp2.2\SentwoAPI.RazorAssemblyInfo.cache
+C:\src\SentwoAPI\obj\Debug\netcoreapp2.2\SentwoAPI.RazorAssemblyInfo.cs
+C:\src\SentwoAPI\obj\Debug\netcoreapp2.2\SentwoAPI.RazorTargetAssemblyInfo.cache
+C:\src\SentwoAPI\obj\Debug\netcoreapp2.2\SentwoAPI.dll
+C:\src\SentwoAPI\obj\Debug\netcoreapp2.2\SentwoAPI.pdb
