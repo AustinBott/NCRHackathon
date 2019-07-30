@@ -39,6 +39,10 @@ namespace SentwoAPI.Controllers
         //    return;
         //}
 
+        /*
+         *Get method to return ALL Entries
+         *
+         */
         [HttpGet("all")]
         public List<TimeStampedEntry> GetAll()
         {
@@ -46,6 +50,9 @@ namespace SentwoAPI.Controllers
             return searchResponse.Documents.ToList();
         }
 
+        /*
+         * Get Method to returns all entries in a given namespace
+         */
         [HttpGet("{name_space}/all")]
         public List<TimeStampedEntry> GetNamespace(string name_space)
         {
@@ -56,8 +63,28 @@ namespace SentwoAPI.Controllers
                ));
 
             return searchResponse.Documents.ToList();
-        
+        }
 
+        [HttpGet("{name_space}/{entityId}")]
+        public List<TimeStampedEntry> GetByID(string name_space, string EntityId)
+        {
+            var searchResponse = _client.Search<TimeStampedEntry>(s => s
+            .Query(q => q
+                .Bool(b => b
+                    .Must(mu => mu
+                        .Match(m => m
+                            .Field(f => f.Namespace)
+                            .Query(name_space)
+                ), mu => mu
+                .Match(m => m
+                    .Field(f => f.EntityId)
+                    .Query(EntityId)
+                )
+            )
+        )
+    )
+);
+            return searchResponse.Documents.ToList();
         }
 
     }
