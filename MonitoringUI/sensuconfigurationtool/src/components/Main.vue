@@ -2,7 +2,7 @@
     <div id="main">
 
       <div id="header" v-if="loggedIn && selectedAgentId">
-        <Navigation/>
+        <Navigation :selectedAgentId="selectedAgentId" />
       </div>
 
       <div id="routingContainer">
@@ -29,6 +29,11 @@ import Navigation from "./Navigation"
 
 export default {
   props: ['loggedIn'],
+  data: function() {
+    return {
+      selectedAgentId: 0
+    };
+  },
   mounted: function() {
     selectedAgentId: 0
   },

@@ -37,7 +37,7 @@ const router = new VueRouter({
   base: __dirname,
   routes: [
     { path: '/availableAgentList', component: AvailableAgentList, beforeEnter: requireAuth },
-    { path: '/agent/:agentId', component: AgentDashboard, beforeEnter: requireAuth },
+    { path: '/agent/dashboard/:agentId', component: AgentDashboard, beforeEnter: requireAuth, props: true },
     { path: '/agent/checks/:agentId', component: ChecksList, beforeEnter: requireAuth },
     { path: '/login', component: Login },
     { path: '/logout',
