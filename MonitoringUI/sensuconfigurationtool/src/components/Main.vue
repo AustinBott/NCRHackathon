@@ -11,7 +11,8 @@
         </template>
         <template v-else>
           <div>
-            <Dashboard />
+            <Dashboard v-if="loggedIn" />
+            <Login v-if="!loggedIn" />
           </div>
         </template>
       </div>
@@ -25,6 +26,7 @@
 import auth from '../auth'
 import Dashboard from './Dashboard'
 import Login from './Login'
+import Navigation from "./Navigation"
 
 export default {
   data () {
@@ -34,12 +36,8 @@ export default {
   },
   components: {
       Dashboard,
-      Login
-  },
-  beforeCreate() {
-    if (!loggedIn) {
-      router.push({ path: '/login' })
-    }
+      Login,
+      Navigation
   },
   created () {
     auth.onChange = loggedIn => {
