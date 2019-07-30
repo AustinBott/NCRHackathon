@@ -28,7 +28,8 @@ namespace SentwoAPI.Controllers
         {
             var ndexRespons = _client.IndexDocument((TimeStampedEntry)entry);
 
-            return CreatedAtAction(entry.EntityId + entry.MetricTitle, entry);
+            //return CreatedAtAction(entry.EntityId + entry.MetricTitle, entry);
+            return null;
         }
 
         //[HttpGet("{name_space}/{entityId}/{metricTitle}")]
@@ -37,6 +38,27 @@ namespace SentwoAPI.Controllers
         //    // [TODO]
         //    return;
         //}
+
+        [HttpGet("all")]
+        public List<TimeStampedEntry> GetAll()
+        {
+            var searchResponse = _client.Search<TimeStampedEntry>();
+            return searchResponse.Documents.ToList();
+        }
+
+        [HttpGet("{name_space}/all")]
+        public List<TimeStampedEntry> GetNamespace(string name_space)
+        {
+            var searchResponse = _client.Search<TimeStampedEntry>(s => s
+                .Query(q => q.
+                    Match(m => m.
+                        Field(f => f.Namespace).Query(name_space))
+               ));
+
+            return searchResponse.Documents.ToList();
+        
+
+        }
 
     }
 }

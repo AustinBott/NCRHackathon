@@ -1,30 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "C:\\src\\NCRHackathon\\SentwoAPI\\SentwoAPI.csproj": {}
+    "/Users/sh185239/NCRHackathon/SentwoAPI/SentwoAPI.csproj": {}
   },
   "projects": {
-    "C:\\src\\NCRHackathon\\SentwoAPI\\SentwoAPI.csproj": {
+    "/Users/sh185239/NCRHackathon/SentwoAPI/SentwoAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\src\\NCRHackathon\\SentwoAPI\\SentwoAPI.csproj",
+        "projectUniqueName": "/Users/sh185239/NCRHackathon/SentwoAPI/SentwoAPI.csproj",
         "projectName": "SentwoAPI",
-        "projectPath": "C:\\src\\NCRHackathon\\SentwoAPI\\SentwoAPI.csproj",
-        "packagesPath": "C:\\Users\\jj185175\\.nuget\\packages\\",
-        "outputPath": "C:\\src\\NCRHackathon\\SentwoAPI\\obj\\",
+        "projectPath": "/Users/sh185239/NCRHackathon/SentwoAPI/SentwoAPI.csproj",
+        "packagesPath": "/Users/sh185239/.nuget/packages/",
+        "outputPath": "/Users/sh185239/NCRHackathon/SentwoAPI/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\jj185175\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/sh185239/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
