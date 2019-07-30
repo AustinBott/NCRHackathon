@@ -13,33 +13,10 @@ namespace SentwoAPI.Controllers
     [ApiController]
     public class DBController : ControllerBase
     {
-        private readonly EntryContext _context;
         private readonly ElasticClient _client;
 
-        public DBController(EntryContext context)
+        public DBController()
         {
-            //_context = context;
-
-            //if (_context.EntryContexts.Count() == 0)
-            //{
-            //    /* Create a new Entry if collection is empty,
-            //     * which means you can't delete all Entries.
-            //     * 
-            //     * [TODO] Get rid of this logic
-            //     *        Here to provide example.
-            //     */
-            //    _context.EntryContexts.Add(
-            //        new Entry
-            //        {
-            //            Namespace = "demo_jj185175",
-            //            EntityId = "CSO_Marche_22-7",
-            //            Date = DateTime.Now,
-            //            MetricTitle = "printer_status",
-            //            MetricValue = 256,
-            //            MetricStatus = StatusEnum.Warning
-            //        });
-            //    _context.SaveChanges();
-            //}
             var settings = new ConnectionSettings(new Uri("https://a2a41db7756c4027892e36a0b3956249.us-central1.gcp.cloud.es.io:9243"))
                 .DefaultIndex("test")
                 .BasicAuthentication("elastic", "aeBzBFRF2Ll8HtgAtIa5N5Cz");
@@ -49,11 +26,7 @@ namespace SentwoAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Entry>> PostEntry(Entry entry)
         {
-            var ndexRespons = _client.IndexDocument(entry);
-
-            /* Swap below 2 lines out for actual adding to ElasticSearch */
-            //_context.EntryContexts.Add(entry);
-            //await _context.SaveChangesAsync();
+            var ndexRespons = _client.IndexDocument((TimeStampedEntry)entry);
 
             return CreatedAtAction(entry.EntityId + entry.MetricTitle, entry);
         }

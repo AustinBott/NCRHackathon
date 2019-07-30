@@ -13095,11 +13095,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\src\\SentwoAPI\\SentwoAPI.csproj",
+      "projectUniqueName": "C:\\src\\NCRHackathon\\SentwoAPI\\SentwoAPI.csproj",
       "projectName": "SentwoAPI",
-      "projectPath": "C:\\src\\SentwoAPI\\SentwoAPI.csproj",
+      "projectPath": "C:\\src\\NCRHackathon\\SentwoAPI\\SentwoAPI.csproj",
       "packagesPath": "C:\\Users\\jj185175\\.nuget\\packages\\",
-      "outputPath": "C:\\src\\SentwoAPI\\obj\\",
+      "outputPath": "C:\\src\\NCRHackathon\\SentwoAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
