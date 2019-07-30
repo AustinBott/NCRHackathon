@@ -1,11 +1,23 @@
 <template>
     <div id="main">
-        <template v-if="this.loggedIn">
-            <Dashboard />
+
+      <div id="header" v-if="loggedIn">
+        <Navigation/>
+      </div>
+
+      <div id="routingContainer">
+        <template v-if="$route.matched.length">
+          <router-view></router-view>
         </template>
         <template v-else>
-            <Login />
+          <div>
+            <Dashboard />
+          </div>
         </template>
+      </div>
+
+      <div id="footer" v-if="loggedIn">
+      </div>    
     </div>
 </template>
 
@@ -23,6 +35,11 @@ export default {
   components: {
       Dashboard,
       Login
+  },
+  beforeCreate() {
+    if (!loggedIn) {
+      router.push({ path: '/login' })
+    }
   },
   created () {
     auth.onChange = loggedIn => {

@@ -1,6 +1,7 @@
 <template>
   <div id="dashboard">
     <div id="header">
+      <Navigation />
     </div>
     <div id="body">
       <template v-if="$route.matched.length">
@@ -21,6 +22,7 @@
     </div>
     <div id="footer">
     </div>
+    This is the point where the user should have selected a store/agent.
   </div>
 </template>
 
@@ -28,8 +30,9 @@
 
 import auth from '../auth'
 import agentCard from './component-items/agentCard'
+import Navigation from './Navigation'
 
-export default {
+  export default {
     data () {
       return {
         loggedIn: auth.loggedIn(),
@@ -61,6 +64,7 @@ export default {
       }
     },
     components:{
+      Navigation,
       agentCard
     }
   }
