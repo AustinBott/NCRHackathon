@@ -19,7 +19,6 @@ import agentCard from './component-items/agentCard'
 import {getEntities} from '../api/entitiesAPI';
 
   export default {
-     props: ['loggedIn'],
     data () {
       return {
         items: [
