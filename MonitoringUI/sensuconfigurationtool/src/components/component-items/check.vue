@@ -29,9 +29,10 @@
                 v-for="handler in check.handlers" v-bind:key="handler.name">
                     <handler
                     v-bind:handler="handler"/>
-                </div>
+                </div>  
             </div>
         </div>
+        <input v-model="check.name" lazy>
     </div>
 </template>
 
@@ -66,6 +67,7 @@ export default {
         width: 100%;
         display: flex;
         border: 1px blue solid;
+        flex-direction: column;
     }
     .card.selected{
         border: 4px red solid;

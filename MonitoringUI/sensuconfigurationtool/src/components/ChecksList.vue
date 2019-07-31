@@ -8,17 +8,17 @@
             <p> No agent selected </p>
         </div>
         <div id="checks">
-            <div v-for="check in checks" v-bind:key="check.name">
-                <div v-on:click="SelectCheck(check.name)">
+            <div v-for="(check, index) in checks" v-bind:key="index">
+                <div v-on:click="SelectCheck(index)">
                 <check
-                v-bind:check="check" class="card" v-bind:isSelected="check.name == selected"
+                v-bind:check="check" class="card" v-bind:isSelected="index == selected"
                 />
                 </div>
             </div>
         </div>
         <div id="buttonControl">
              <md-button class="md-primary" v-on:click="NewCheck()">Add</md-button>
-             <md-button class="md-accent" v-on:click="RemoveCheck()" :disabled="!selected">Remove</md-button>
+             <md-button class="md-accent" v-on:click="RemoveCheck()" :disabled="(selected === undefined)">Remove</md-button>
         </div>
     </div>
 </template>
@@ -66,18 +66,21 @@ export default {
         },
         RemoveCheck(){
         var checks = this.checks;
-        
-        this.checks = Object.keys(checks)
+        this.checks.splice(this.selected, 1);
+        this.selected = undefined;
+        /*this.checks = Object.keys(checks)
         .map(key => checks[key]) // turn an array of keys into array of items.
         .filter(check => check.name !== this.selected);
-        this.selected = undefined;
+        this.selected = undefined;*/
         },
-        SelectCheck: function(checkName){
-            if(this.selected != checkName){
-                this.selected = checkName;
+        SelectCheck: function(checkIndex){
+            if(this.selected != checkIndex){
+                this.selected = checkIndex;
+                console.log(this.selected);
             }
             else{
                 this.selected = undefined;
+                console.log(this.selected);
             }
         }
     },
