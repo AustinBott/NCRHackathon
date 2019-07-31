@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import { MdButton, MdContent, MdTabs, MdCard, MdField} from 'vue-material/dist/components'
+import { MdButton, MdContent, MdTabs, MdCard, MdField, MdBottomBar, MD} from 'vue-material/dist/components'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 
@@ -10,6 +10,7 @@ Vue.use(VueRouter)
 Vue.use(MdCard)
 Vue.use(MdField)
 Vue.use(MdButton)
+Vue.use(MdBottomBar)
 
 Vue.config.productionTip = false
 
@@ -41,9 +42,11 @@ const router = new VueRouter({
     { path: '/checklist/', component: ChecksList, beforeEnter: requireAuth, props: true },
     { path: '/checklist/:agentId', component: ChecksList, beforeEnter: requireAuth, props: true },
     { path: '/login', component: Login },
+    { path: '/', component: AvailableAgentList, beforeEnter: requireAuth },
     { path: '/logout',
       beforeEnter (to, from, next) {
         auth.logout()
+        console.log("logging user out");
         next('/login')
       }
     }
