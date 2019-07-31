@@ -16,7 +16,7 @@
                     <div class="rows">
                         <div class="row">
                             <p>{{check.name}}</p>
-                            <p>{{check.metaData.namespace}}</p>
+                            <p>{{check.metadata.namespace}}</p>
                         </div>
                         <div class="row">
                             <div v-for="(subscription, index) in check.subscriptions" v-bind:key="index">
