@@ -1,6 +1,5 @@
 <template>
     <div>
-        <p>{{checkName}}</p>
         <check
         v-bind:check="check"
         />
@@ -12,12 +11,15 @@
 import check from './component-items/check'
 
 export default {
+    created(){
+        this.check = JSON.parse(this.checkName);
+    },
     components:{
         check
     },
     props:{
         checkName:String,
-        check:String
-    }
+        check:Object
+    },
 }
 </script>
