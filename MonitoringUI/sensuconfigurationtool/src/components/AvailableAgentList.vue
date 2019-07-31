@@ -18,7 +18,6 @@ import auth from '../auth'
 import agentCard from './component-items/agentCard'
 
   export default {
-     props: ['loggedIn'],
     data () {
       return {
         items: [
