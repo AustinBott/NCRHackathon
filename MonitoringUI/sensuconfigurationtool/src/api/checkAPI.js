@@ -8,7 +8,7 @@ function getAuthenticationToken() {
 }
 
 export function getChecks(checkName) {
-    var checkUrl = "https://localhost:5001/api/sensuchecks";
+    var checkUrl = "http://billgatespersonalcomputer.centralus.cloudapp.azure.com:8080/api/sensuchecks";
     if (checkName)
         checkUrl += "/" + checkName;
 
@@ -25,20 +25,10 @@ export function getChecks(checkName) {
 }
 
 
-export function createCheck(command, subscriptions, interval, publish, handlers, metadata) {
-    let check = {
-        "command": command,
-        "subscriptions": subscriptions,
-        "interval": interval,
-        "publish": publish,
-        "handlers": handlers,
-        "metadata": metadata
-    };
-
+export function createCheck(check) {
     axios({
         method: 'post',
-        headers: { "Authorization": "Bearer " + getAuthenticationToken(), "content-type": "application/json" },
-        url: URL + "/checks",
+        url: "http://localhost:59193/api/sensuchecks",
         data: check
     })
         .then(function (error) {
@@ -48,7 +38,6 @@ export function createCheck(command, subscriptions, interval, publish, handlers,
             console.log(body);
         });
 }
-
 export function editCheck(command, subscriptions, interval, publish, handlers, metadata) {
     let check = {
         "command": command,
