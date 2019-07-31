@@ -36,26 +36,14 @@ namespace SentwoAPI.Controllers
 
 
         [HttpPost()]
-        public ActionResult<object> PostCheck(string command, string subscriptions, int interval, bool publish, string[] handlers, string name, string namespaceStr) {
-            var metadata = new {
-                name,
-                namespaceStr
-            };
-            var jsonMetadata = JsonConvert.SerializeObject(metadata);
+        public ActionResult<object> PostCheck(object check) {
+            string authToken = new SensuAuthenticationController().GetAuthenticationToken();
 
-            var check = new {
-                command,
-                subscriptions,
-                interval,
-                publish,
-                handlers,
-                jsonMetadata
-            };
             var jsonCheck = JsonConvert.SerializeObject(check);
 
-            RestClient client = new RestClient(URL) {
-                Authenticator = new HttpBasicAuthenticator("ql185017", "wM7+T9xWzucsalAP")
-            };
+            RestClient client = new RestClient(URL);
+
+            client.AddDefaultHeader("Authorization", "Bearer " + authToken);
 
             var request = new RestRequest("", Method.POST);
             request.AddJsonBody(jsonCheck);

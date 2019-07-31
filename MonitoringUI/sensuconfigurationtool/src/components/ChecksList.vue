@@ -13,9 +13,9 @@
                 </md-card-header>
                 <div id="buttonControl">
                 <md-button class="md-primary" v-on:click.stop="EditCheck(check)">Edit</md-button>
-                <md-button class="md-accent" v-on:click.stop="RemoveCheck(index)">Remove</md-button>
-            </div>    
-            </md-card> 
+                <md-button class="md-accent" v-on:click.stop="RemoveCheck(check)">Remove</md-button>
+            </div>
+            </md-card>
                     <!-- <div class="check" :class="{selected: selected === index}" v-on:click="SelectCheck(index)">
                     <div class="rows">
                         <div class="row">
@@ -41,7 +41,7 @@
 
 import check from './component-items/check'
 import EditCheck from './EditCheck'
-import { getChecks } from '../api/checkAPI';
+import { getChecks, createCheck, deleteCheck } from '../api/checkAPI';
 
 
 export default {
@@ -94,15 +94,13 @@ export default {
             )
             this.selected = undefined;
         },
-        RemoveCheck(){
-            var checks = this.checks;
-            this.checks.splice(this.selected, 1);
+        RemoveCheck: function(check){
+            deleteCheck(check.name);
             this.selected = undefined;
         },
         SelectCheck: function(checkIndex){
             if(this.selected != checkIndex){
                 this.selected = checkIndex;
-                console.log(this.selected);
             }
             else{
                 this.selected = undefined;
