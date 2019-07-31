@@ -12,7 +12,7 @@
                 </md-card-header>
                 <div id="buttonControl">
                 <md-button class="md-primary" v-on:click.stop="EditCheck(check)">Edit</md-button>
-                <md-button class="md-accent" v-on:click.stop="RemoveCheck(index)">Remove</md-button>
+                <md-button class="md-accent" v-on:click.stop="RemoveCheck(check)">Remove</md-button>
             </div>    
             </md-card> 
                     <!-- <div class="check" :class="{selected: selected === index}" v-on:click="SelectCheck(index)">
@@ -100,7 +100,6 @@ export default {
         SelectCheck: function(checkIndex){
             if(this.selected != checkIndex){
                 this.selected = checkIndex;
-                console.log(this.selected);
             }
             else{
                 this.selected = undefined;

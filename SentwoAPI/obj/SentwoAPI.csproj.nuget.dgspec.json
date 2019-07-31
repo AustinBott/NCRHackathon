@@ -1,19 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< Updated upstream
-    "C:\\Projects\\Hackathon\\SentwoAPI\\SentwoAPI.csproj": {}
-  },
-  "projects": {
-    "C:\\Projects\\Hackathon\\SentwoAPI\\SentwoAPI.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Projects\\Hackathon\\SentwoAPI\\SentwoAPI.csproj",
-        "projectName": "SentwoAPI",
-        "projectPath": "C:\\Projects\\Hackathon\\SentwoAPI\\SentwoAPI.csproj",
-        "packagesPath": "C:\\Users\\AB185416\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\Hackathon\\SentwoAPI\\obj\\",
-=======
     "C:\\NCR\\Hackathon\\NCRHackathon\\SentwoAPI\\SentwoAPI.csproj": {}
   },
   "projects": {
@@ -25,18 +12,13 @@
         "projectPath": "C:\\NCR\\Hackathon\\NCRHackathon\\SentwoAPI\\SentwoAPI.csproj",
         "packagesPath": "C:\\Users\\Andrew Scheinbach\\.nuget\\packages\\",
         "outputPath": "C:\\NCR\\Hackathon\\NCRHackathon\\SentwoAPI\\obj\\",
->>>>>>> Stashed changes
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-<<<<<<< Updated upstream
-          "C:\\Users\\AB185416\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
           "C:\\Users\\Andrew Scheinbach\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> Stashed changes
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
