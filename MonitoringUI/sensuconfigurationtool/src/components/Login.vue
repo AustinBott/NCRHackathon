@@ -1,7 +1,6 @@
 <template>
     <div>
         <p v-if="$route.query.redirect">
-            You need to login first.
         </p>
         <form novalidate class="md-layout" @submit.prevent="login">
             <md-card class="md-layout-item md-size-50 md-small-size-100">

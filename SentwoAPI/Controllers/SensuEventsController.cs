@@ -12,19 +12,22 @@ namespace SentwoAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SensuEntitiesController : ControllerBase
+    public class SensuEventsController : ControllerBase
     {
 
         private const string URL = "https://sensuservice.preprod.ncrsaas.com/api/core/v2/namespaces/cso2_development/entities";
 
         [HttpGet()]
-        public ActionResult<object> GetEntities(string entityName)
+        public ActionResult<object> GetEvents(string entityName, string checkName)
         {
             RestClient client;
-            if (string.IsNullOrEmpty(entityName))
+            if (string.IsNullOrEmpty(entityName)) {
                 client = new RestClient(URL);
-            else
+            } else if (string.IsNullOrEmpty(checkName)) {
                 client = new RestClient(URL + "/" + entityName);
+            } else {
+                client = new RestClient(URL + "/" + entityName + "/" + checkName);
+            }
 
             string authToken = new SensuAuthenticationController().GetAuthenticationToken();
             client.AddDefaultHeader("Authorization", "Bearer " + authToken);
