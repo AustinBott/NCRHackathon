@@ -1,23 +1,23 @@
 <template>
     <div id="main">
 
-      <div id="header" v-if="loggedIn && selectedAgentId">
+      <div id="header" v-if="loggedIn">
         <Navigation :selectedAgentId="selectedAgentId" />
       </div>
 
       <div id="routingContainer" class="container">
         <template v-if="$route.matched.length">
-          <router-view></router-view>
+            <router-view @agentChanged="onAgentChanged" :loggedIn="loggedIn"></router-view> 
         </template>
         <template v-else>
           <div>
-            <AvailableAgentList @agentChanged="onAgentChanged" :loggedIn="loggedIn" v-if="loggedIn" />
-            <Login v-if="!loggedIn" />
+            <p>404 Error</p>
           </div>
         </template>
       </div>
 
-      <div id="footer" v-if="loggedIn">
+      <div id="footer" v-if="loggedIn" class="footer">
+        <router-link to="/logout">Log out</router-link>
       </div>    
     </div>
 </template>
@@ -58,5 +58,8 @@ export default {
 <style>
   .container{
     margin: 30px;
+  }
+  .footer{
+    margin-left:30px;
   }
 </style>

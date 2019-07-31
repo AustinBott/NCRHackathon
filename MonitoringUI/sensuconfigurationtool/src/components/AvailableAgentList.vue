@@ -1,9 +1,6 @@
 <template>
   <div id="availableAgentList">
-    <div id="header">
-    </div>
     <div id="body" class = "container">
-      This is the point where the user should have selected a store/agent.
         <h4> Available Agents </h4>
         <div class ="flex-container">
         <div class= "card-list" v-for="item in items" v-bind:key="item.name" v-on:click="navigateToDashboard(item.name)">
@@ -12,9 +9,6 @@
             />
           </div>
         </div>
-        <router-link to="/logout">Log out</router-link>
-    </div>
-    <div id="footer">
     </div>
   </div>
 </template>
@@ -69,7 +63,7 @@ import agentCard from './component-items/agentCard'
     },
     created() {
       //reset agent ID
-      this.$emit('agentChanged', 0);
+      this.$emit('agentChanged', '');
     },
     methods: {
       navigateToDashboard: function (agentId) {
