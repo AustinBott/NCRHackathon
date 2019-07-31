@@ -2,12 +2,12 @@
     <div class = "card">
         <div class = "table">
             <div class = "row">
-                <div class = "item">{{agent.name}}</div>
-                <div class = "item">{{agent.namespace}}</div>
+                <div class = "item">{{agent.metadata.name}}</div>
+                <div class = "item">{{agent.metadata.namespace}}</div>
             </div>
             <div class="row">
-                <div class = "item">{{agent.lastUpdate}}</div>
-                <div class = "item" >{{agent.label}}</div>
+                <div class = "item">{{agent.lastseen}}</div>
+                <div class = "item" >{{agent.user}}</div>
             </div>
         </div>
     </div>
@@ -17,12 +17,10 @@
 
 export default {
     props:{
-        agent:{
-            name : String,
-            namespace : String,
-            lastUpdate : String,
-            label : String
-        }
+        agent: Object
+    },
+    created() {
+        console.log("created", this.agent);
     }
 }
 </script>

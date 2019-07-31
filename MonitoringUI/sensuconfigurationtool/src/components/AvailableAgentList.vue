@@ -3,9 +3,9 @@
     <div id="body" class = "container">
         <h4> Available Agents </h4>
         <div class ="flex-container">
-        <div class= "card-list" v-for="item in items" v-bind:key="item.name" v-on:click="navigateToDashboard(item.name)">
+        <div class= "card-list" v-for="agent in agents" v-bind:key="agent.metadata.name" v-on:click="navigateToDashboard(agent.metadata.name)">
             <agentCard
-            v-bind:agent="item" class="card"
+            v-bind:agent="agent" class="card"
             />
           </div>
         </div>
@@ -16,6 +16,7 @@
 <script>
 import auth from '../auth'
 import agentCard from './component-items/agentCard'
+import {getEntities} from '../api/entitiesAPI';
 
   export default {
      props: ['loggedIn'],
@@ -58,18 +59,24 @@ import agentCard from './component-items/agentCard'
             lastUpdate : '17:1sdfafda5:20',
             label : 'eventdasfdasdfta'
           }
-          ]
+          ],
+          agents: []
       }
     },
     created() {
       //reset agent ID
       this.$emit('agentChanged', '');
+
+      getEntities().then((data) => {
+        this.agents = data;
+      });
+      console.log(this.agents);
     },
     methods: {
-      navigateToDashboard: function (agentId) {
-        this.$router.push(`/agent/dashboard/${agentId}`);
+      navigateToDashboard: function (agentName) {
+        this.$router.push(`/agent/dashboard/${agentName}`);
         
-        this.$emit('agentChanged', agentId)
+        this.$emit('agentChanged', agentName)
       }
     },
     components:{
