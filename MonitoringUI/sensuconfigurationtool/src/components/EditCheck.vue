@@ -16,12 +16,17 @@ import check from './component-items/check'
 import {editCheck} from '../api/checkAPI'
 
 export default {
+    data(){
+        return{
+            check
+        }
+    },
     created(){
         this.check = JSON.parse(this.checkName);
     },
     methods:{
         SaveCheck(){
-            editCheck()
+            editCheck();
         }
     },
     components:{
@@ -29,7 +34,6 @@ export default {
     },
     props:{
         checkName:String,
-        check:Object
     },
 }
 </script>
