@@ -1,15 +1,21 @@
 import axios from 'axios';
-import authToken from './authenticationAPI.js'
+import AuthenticationHandler from './authenticationAPI.js'
 
-function getCheck(checkName) {
+function getAuthenticationToken() {
+    var authenticationHandler = new AuthenticationHandler();
+
+    return authenticationHandler.authToken;
+}
+
+//if a check name is not provided, this endpoint will retrieve the full checks list.
+export function getCheck(checkName) {
     let checkUrl = URL + "/checks"
     if (checkName)
         checkUrl += "/" + checkName;
 
-
     axios({
         method: 'get',
-        headers: { "Authorization": "Bearer " + authToken, "content-type": "application/json" },
+        headers: { "Authorization": "Bearer " + getAuthenticationToken(), "content-type": "application/json" },
         url: checkUrl,
     })
         .then(function (response) {
@@ -21,7 +27,7 @@ function getCheck(checkName) {
 }//getCheckList()
 
 
-function createCheck(command, subscriptions, interval, publish, handlers, metadata) {
+export function createCheck(command, subscriptions, interval, publish, handlers, metadata) {
     let check = {
         "command": command,
         "subscriptions": subscriptions,
@@ -33,7 +39,7 @@ function createCheck(command, subscriptions, interval, publish, handlers, metada
 
     axios({
         method: 'post',
-        headers: { "Authorization": "Bearer " + authToken, "content-type": "application/json" },
+        headers: { "Authorization": "Bearer " + getAuthenticationToken(), "content-type": "application/json" },
         url: URL + "/checks",
         data: check
     })
@@ -45,7 +51,7 @@ function createCheck(command, subscriptions, interval, publish, handlers, metada
         });
 }
 
-function editCheck(command, subscriptions, interval, publish, handlers, metadata) {
+export function editCheck(command, subscriptions, interval, publish, handlers, metadata) {
     let check = {
         "command": command,
         "subscriptions": subscriptions,
@@ -57,7 +63,7 @@ function editCheck(command, subscriptions, interval, publish, handlers, metadata
 
     axios({
         method: 'put',
-        headers: { "Authorization": "Bearer " + authToken, "content-type": "application/json" },
+        headers: { "Authorization": "Bearer " + getAuthenticationToken(), "content-type": "application/json" },
         url: URL + "/checks/" + metadata.name,
         data: check
     })
@@ -70,10 +76,10 @@ function editCheck(command, subscriptions, interval, publish, handlers, metadata
 }
 
 
-function deleteCheck(name) {
+export function deleteCheck(name) {
     axios({
         method: 'delete',
-        headers: { "Authorization": "Bearer " + authToken, "content-type": "application/json" },
+        headers: { "Authorization": "Bearer " + getAuthenticationToken(), "content-type": "application/json" },
         url: URL + "/checks/" + name,
     })
         .then(function (error) {

@@ -1,8 +1,14 @@
 import axios from 'axios';
-import authToken from './authenticationAPI.js'
+import AuthenticationHandler from './authenticationAPI.js'
+
+function getAuthenticationToken() {
+    var authenticationHandler = new AuthenticationHandler();
+
+    return authenticationHandler.authToken;
+}
 
 
-function getHandler(handlerName) {
+export function getHandler(handlerName) {
 
     let handlerUrl = URL + "/handlers"
     if (handlerName)
@@ -11,7 +17,7 @@ function getHandler(handlerName) {
 
     axios({
         method: 'get',
-        headers: { "Authorization": "Bearer " + authToken, "content-type": "application/json" },
+        headers: { "Authorization": "Bearer " + getAuthenticationToken(), "content-type": "application/json" },
         url: handlerUrl,
     })
         .then(function (response) {
@@ -26,7 +32,7 @@ function getHandler(handlerName) {
 
 
 
-function createHandler(command, handlers, metadata) {
+export function createHandler(command, handlers, metadata) {
     let handler = {
         "command": command,
         "handlers": handlers,
@@ -40,7 +46,7 @@ function createHandler(command, handlers, metadata) {
 
     axios({
         method: 'post',
-        headers: { "Authorization": "Bearer " + authToken, "content-type": "application/json" },
+        headers: { "Authorization": "Bearer " + getAuthenticationToken(), "content-type": "application/json" },
         url: URL + "/handlers",
         data: handler
     })
@@ -52,7 +58,7 @@ function createHandler(command, handlers, metadata) {
         });
 }
 
-function editHandler(command, handlers, metadata) {
+export function editHandler(command, handlers, metadata) {
     let handler = {
         "command": command,
         "handlers": handlers,
@@ -66,7 +72,7 @@ function editHandler(command, handlers, metadata) {
 
     axios({
         method: 'put',
-        headers: { "Authorization": "Bearer " + authToken, "content-type": "application/json" },
+        headers: { "Authorization": "Bearer " + getAuthenticationToken(), "content-type": "application/json" },
         url: URL + "/handlers/" + metadata.name,
         data: handler
     })
@@ -79,10 +85,10 @@ function editHandler(command, handlers, metadata) {
 }
 
 
-function deleteHandler(name) {
+export function deleteHandler(name) {
     axios({
         method: 'delete',
-        headers: { "Authorization": "Bearer " + authToken, "content-type": "application/json" },
+        headers: { "Authorization": "Bearer " + getAuthenticationToken(), "content-type": "application/json" },
         url: URL + "/handlers/" + name,
     })
         .then(function (error) {
