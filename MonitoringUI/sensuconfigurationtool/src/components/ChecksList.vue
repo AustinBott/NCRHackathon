@@ -9,11 +9,11 @@
             <div v-for="(check, index) in checks" v-bind:key="index">
             <md-card md-with-hover>
                 <md-card-header>
-                    <div class="md-title">{{check.metadata.namespace}}</div>
+                    <div class="md-title">{{check.metadata.name}}</div>
                 </md-card-header>
                 <div id="buttonControl">
                 <md-button class="md-primary" v-on:click.stop="EditCheck(check)">Edit</md-button>
-                <md-button class="md-accent" v-on:click.stop="RemoveCheck(check)">Remove</md-button>
+                <md-button class="md-accent" v-on:click.stop="RemoveCheck(check.metadata.name)">Remove</md-button>
             </div>
             </md-card>
                     <!-- <div class="check" :class="{selected: selected === index}" v-on:click="SelectCheck(index)">

@@ -10,7 +10,7 @@
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
                             <div class="item title">Check:</div>
-                            <md-input />
+                            <md-input v-model="check.metadata.name" />
                         </md-field>
                     </div>
                 </div>
@@ -20,7 +20,6 @@
                         <md-field>
                             <div class="item title">Metadata: </div>
                             <md-input v-model="check.metadata.namespace" />
-                            <md-input v-model="check.metadata.name" />
                         </md-field>
                     </div>
                 </div>
