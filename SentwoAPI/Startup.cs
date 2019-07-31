@@ -30,10 +30,6 @@ namespace SentwoAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            /* [TODO] Erase line immediately below after Elasticsearch works */
-            services.AddDbContext<TodoContext>(opt => opt.UseInMemoryDatabase("EntryList"));
-
-
             services.AddCors(options =>
             {
                 options.AddPolicy(MyAllowSpecificOrigins,
