@@ -67,6 +67,10 @@ import agentCard from './component-items/agentCard'
           ]
       }
     },
+    created() {
+      //reset agent ID
+      this.$emit('agentChanged', 0);
+    },
     methods: {
       navigateToDashboard: function (agentId) {
         this.$router.push(`/agent/dashboard/${agentId}`);
