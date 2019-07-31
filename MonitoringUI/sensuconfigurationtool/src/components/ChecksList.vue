@@ -1,6 +1,9 @@
 <template>
     <div>
-        <h4>Available Checks</h4>
+        <div class="header">
+            <h4>Available Checks</h4>
+            <md-button class="md-primary" v-on:click="NewCheck()">Add</md-button>
+        </div>
         <div v-if="agentId > 0">
             <p> Agent {{agentId}} selected </p>
         </div>
@@ -9,36 +12,52 @@
         </div>
         <div id="checks">
             <div v-for="(check, index) in checks" v-bind:key="index">
-                <div v-on:click="SelectCheck(index)">
-                <check
-                v-bind:check="check" class="card" v-bind:isSelected="index == selected"
-                />
+                <div class="check" :class="{selected: selected === index}" v-on:click="SelectCheck(index)">
+                    <div class="rows">
+                        <div class="row">
+                            <p>{{check.name}}</p>
+                            <p>{{check.metadata.namespace}}</p>
+                        </div>
+                        <div class="row">
+                            <div v-for="(subscription, index) in check.subscriptions" v-bind:key="index">
+                                <p>{{subscription.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="buttonControl">
+                        <md-button class="md-primary" v-on:click.stop="EditCheck(check)">Edit</md-button>
+                        <md-button class="md-accent" v-on:click.stop="RemoveCheck(index)">Remove</md-button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="buttonControl">
-             <md-button class="md-primary" v-on:click="NewCheck()">Add</md-button>
-             <md-button class="md-accent" v-on:click="RemoveCheck()" :disabled="(selected === undefined)">Remove</md-button>
         </div>
     </div>
 </template>
 <script>
 
 import check from './component-items/check'
+import EditCheck from './EditCheck'
+import { getChecks } from '../api/checkAPI';
+
 
 export default {
     props:{
         agentId: String,
     },
     components:{
-        check
+        check,
+        EditCheck
     },
     methods:{
         NewCheck(){
+            if (!this.checks){
+                this.checks = [];
+            }
+
             this.checks = this.checks.concat(
                 {
                 name: 'newCheck' + this.newCheckCount++,
-                metaData:{
+                metadata:{
                     name: 'newCheck',
                     namespace: 'newChecknameSpace'
                 },
@@ -69,15 +88,12 @@ export default {
                     }],
             }
             )
+            this.selected = undefined;
         },
         RemoveCheck(){
-        var checks = this.checks;
-        this.checks.splice(this.selected, 1);
-        this.selected = undefined;
-        /*this.checks = Object.keys(checks)
-        .map(key => checks[key]) // turn an array of keys into array of items.
-        .filter(check => check.name !== this.selected);
-        this.selected = undefined;*/
+            var checks = this.checks;
+            this.checks.splice(this.selected, 1);
+            this.selected = undefined;
         },
         SelectCheck: function(checkIndex){
             if(this.selected != checkIndex){
@@ -86,69 +102,54 @@ export default {
             }
             else{
                 this.selected = undefined;
-                console.log(this.selected);
             }
+        },
+        EditCheck: function(check){
+            const newCheck = JSON.stringify(check);
+            this.$router.push({path: `/checkslist/editcheck/${newCheck}`});
         }
     },
-     data () {
-         return {
+    created() {
+        getChecks().then((data) => {
+            this.checks = data;
+            console.log(data);
+        });
+        console.log(this.checks);
+    },
+    data () {
+        return {
              newCheckCount: 1,
              selected: undefined,
-             checks: [
-            {
-                name: 'check1',
-                metaData:{
-                    name: 'check1',
-                    namespace: 'namespace1'
-                },
-                subscriptions:[{
-                        name: 'sub1'
-                    },
-                    {
-                        name: 'sub2'
-                    }
-                ],
-                hooks:[{
-                        name: 'hook1'
-                    },
-                    {
-                        name: 'hook3'
-                    }],
-                handlers:[{
-                        name: 'handler5'
-                    },
-                    {
-                        name: 'handler8'
-                    }],
-            },
-            {
-                name: 'check2',
-                metaData:{
-                    name: 'check2',
-                    namespace: 'namespace2'
-                },
-                subscriptions:[{
-                        name: 'sub3'
-                    },
-                    {
-                        name: 'sub4'
-                    }
-                ],
-                hooks:[{
-                        name: 'hook2'
-                    },
-                    {
-                        name: 'hook3'
-                    }],
-                handlers:[{
-                        name: 'handler1'
-                    },
-                    {
-                        name: 'handler5'
-                    }],
-            }
-          ],
-      }
-     },
+             checks: []
+        }
+    },
 }
 </script>
+
+<style scope>
+    .header{
+        display: flex;
+        flex-direction: row;
+        justify-content:space-between;
+    }
+    .check{
+        display: flex;
+        flex-direction: row;
+        border: 2px black solid;
+        justify-content:space-between;
+    }
+    .check.selected{
+        background: lightblue;
+    }
+    .rows{
+        display:flex;
+        flex-direction: column;
+    }
+    .row{
+        display:flex;
+        flex-direction: row;
+    }
+    .md-ripple {
+        z-index: 0;
+    }
+</style>

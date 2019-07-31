@@ -8,7 +8,7 @@ function getAuthenticationToken() {
 }
 
 export function getEntities() {
-    let entitiesUrl ="https://localhost:5001/api/sensuentities"
+    let entitiesUrl ="http://billgatespersonalcomputer.centralus.cloudapp.azure.com:8080/api/sensuentities"
     let entitiesList = [];
 
     return axios({

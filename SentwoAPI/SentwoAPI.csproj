@@ -29,4 +29,7 @@
     <PackageReference Include="RestSharp" Version="106.6.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Controllers\SensuController.cs" />
+  </ItemGroup>
 </Project>
