@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using RestSharp;
 using RestSharp.Authenticators;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace SentwoAPI.Controllers
 {
@@ -17,7 +18,7 @@ namespace SentwoAPI.Controllers
         private const string URL = "https://sensuservice.preprod.ncrsaas.com/api/core/v2/namespaces/cso2_development/checks";
 
         [HttpGet()]
-        public ActionResult<object> GetChecks(string checkName)
+        public ActionResult<object> GetChecks([FromBody] string checkName)
         {
             string authToken = new SensuAuthenticationController().GetAuthenticationToken();
             RestClient client;
@@ -34,56 +35,36 @@ namespace SentwoAPI.Controllers
             return response.Content;
         }
 
-
         [HttpPost()]
-        public ActionResult<object> PostCheck(string command, string subscriptions, int interval, bool publish, string[] handlers, string name, string namespaceStr) {
-            var metadata = new {
-                name,
-                namespaceStr
-            };
-            var jsonMetadata = JsonConvert.SerializeObject(metadata);
+        public ActionResult<object> PostCheck([FromBody]object check) {
 
-            var check = new {
-                command,
-                subscriptions,
-                interval,
-                publish,
-                handlers,
-                jsonMetadata
-            };
-            var jsonCheck = JsonConvert.SerializeObject(check);
+            var strCheck = JsonConvert.SerializeObject(check);
 
-            RestClient client = new RestClient(URL) {
-                Authenticator = new HttpBasicAuthenticator("ql185017", "wM7+T9xWzucsalAP")
-            };
+            RestClient client = new RestClient(URL);
+
+            string authToken = new SensuAuthenticationController().GetAuthenticationToken();
+            client.AddDefaultHeader("Authorization", "Bearer " + authToken);
 
             var request = new RestRequest("", Method.POST);
-            request.AddJsonBody(jsonCheck);
+            request.AddJsonBody(strCheck);
             var response = client.Execute(request);
 
             return response.Content;
         }
 
         [HttpPut()]
-        public ActionResult<object> PutCheck(string command, string subscriptions, int interval, bool publish, string[] handlers, string name, string namespaceStr) {
-            var metadata = new {
-                name,
-                namespaceStr
-            };
-
-            var check = new {
-                command,
-                subscriptions,
-                interval,
-                publish,
-                handlers,
-                metadata
-            };
+        public ActionResult<object> PutCheck([FromBody]object check) {
+            
             var jsonCheck = JsonConvert.SerializeObject(check);
+            JObject jsonObj = JObject.Parse(jsonCheck);
+            JToken jtok = jsonObj.SelectToken("metadata.name");
 
-            RestClient client = new RestClient(URL + "/" + name) {
-                Authenticator = new HttpBasicAuthenticator("ql185017", "wM7+T9xWzucsalAP")
-            };
+            var nameStr = jtok.ToString();
+
+            RestClient client = new RestClient(URL + "/" + nameStr);
+
+            string authToken = new SensuAuthenticationController().GetAuthenticationToken();
+            client.AddDefaultHeader("Authorization", "Bearer " + authToken);
 
             var request = new RestRequest("", Method.PUT);
             request.AddJsonBody(jsonCheck);
@@ -93,11 +74,12 @@ namespace SentwoAPI.Controllers
         }
 
         [HttpDelete()]
-        public ActionResult<object> DeleteCheck(string name) {
+        public ActionResult<object> DeleteCheck([FromBody] string name) {
 
-            RestClient client = new RestClient(URL + "/" + name) {
-                Authenticator = new HttpBasicAuthenticator("ql185017", "wM7+T9xWzucsalAP")
-            };
+            RestClient client = new RestClient(URL + "/" + name);
+
+            string authToken = new SensuAuthenticationController().GetAuthenticationToken();
+            client.AddDefaultHeader("Authorization", "Bearer " + authToken);
 
             var request = new RestRequest("", Method.DELETE);
             var response = client.Execute(request);
@@ -105,12 +87,14 @@ namespace SentwoAPI.Controllers
             return response.Content;
         }
 
-        [HttpPost()]
-        public ActionResult<object> ExecuteCheck(string name) {
+        
+        [HttpPost("Execute")]
+        public ActionResult<object> ExecuteCheck([FromBody] string name) {
 
-            RestClient client = new RestClient(URL + "/" + name + "/execute") {
-                Authenticator = new HttpBasicAuthenticator("ql185017", "wM7+T9xWzucsalAP")
-            };
+            RestClient client = new RestClient(URL + "/" + name + "/execute");
+
+            string authToken = new SensuAuthenticationController().GetAuthenticationToken();
+            client.AddDefaultHeader("Authorization", "Bearer " + authToken);
 
             var request = new RestRequest("", Method.POST);
             var response = client.Execute(request);
