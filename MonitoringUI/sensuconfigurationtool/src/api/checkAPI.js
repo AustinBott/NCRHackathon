@@ -8,7 +8,7 @@ function getAuthenticationToken() {
 }
 
 export function getChecks(checkName) {
-    var checkUrl = "https://localhost:5001/api/sensuchecks";
+    var checkUrl = "http://billgatespersonalcomputer.centralus.cloudapp.azure.com:8080/api/sensuchecks";
     if (checkName)
         checkUrl += "/" + checkName;
 
