@@ -60,6 +60,7 @@ export default {
 <style>
   .container{
     margin: 30px;
+    margin-bottom: 60px;
   }
   .footer{
     margin-left:30px;

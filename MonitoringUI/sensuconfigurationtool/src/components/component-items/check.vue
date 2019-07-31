@@ -1,5 +1,5 @@
 <template>
-    <div class = "card" :class="{selected:isSelected}">
+    <div id="check" class = "card" :class="{selected:isSelected}">
         <div class = "table">
             <div class = "row header"> 
                <div class = "item"> Check: {{check.name}}</div>
@@ -43,17 +43,7 @@ import handler from './handler'
 export default {
     props:{
         isSelected: Boolean,
-        selectedAgentId: ['selectedAgentId'],
-        check:{
-            name: String,
-            metaData:{
-                name: String,
-            nameSpace: String
-            },
-            subscriptions:[],
-            hooks:[],
-            handlers:[],
-        }
+        check: Object
     },
     components:{
         hook,

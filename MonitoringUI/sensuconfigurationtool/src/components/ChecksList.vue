@@ -25,6 +25,8 @@
 <script>
 
 import check from './component-items/check'
+import { getChecks } from '../api/checkAPI';
+
 
 export default {
     props:{
@@ -65,13 +67,9 @@ export default {
             )
         },
         RemoveCheck(){
-        var checks = this.checks;
-        this.checks.splice(this.selected, 1);
-        this.selected = undefined;
-        /*this.checks = Object.keys(checks)
-        .map(key => checks[key]) // turn an array of keys into array of items.
-        .filter(check => check.name !== this.selected);
-        this.selected = undefined;*/
+            var checks = this.checks;
+            this.checks.splice(this.selected, 1);
+            this.selected = undefined;
         },
         SelectCheck: function(checkIndex){
             if(this.selected != checkIndex){
@@ -84,65 +82,25 @@ export default {
             }
         }
     },
-     data () {
-         return {
+    created() {
+        getChecks().then((data) => {
+            this.checks = data;
+            console.log(data);
+        });
+        console.log(this.checks);
+    },
+    data () {
+        return {
              newCheckCount: 1,
              selected: undefined,
-             checks: [
-            {
-                name: 'check1',
-                metaData:{
-                    name: 'check1',
-                    namespace: 'namespace1'
-                },
-                subscriptions:[{
-                        name: 'sub1'
-                    },
-                    {
-                        name: 'sub2'
-                    }
-                ],
-                hooks:[{
-                        name: 'hook1'
-                    },
-                    {
-                        name: 'hook3'
-                    }],
-                handlers:[{
-                        name: 'handler5'
-                    },
-                    {
-                        name: 'handler8'
-                    }],
-            },
-            {
-                name: 'check2',
-                metaData:{
-                    name: 'check2',
-                    namespace: 'namespace2'
-                },
-                subscriptions:[{
-                        name: 'sub3'
-                    },
-                    {
-                        name: 'sub4'
-                    }
-                ],
-                hooks:[{
-                        name: 'hook2'
-                    },
-                    {
-                        name: 'hook3'
-                    }],
-                handlers:[{
-                        name: 'handler1'
-                    },
-                    {
-                        name: 'handler5'
-                    }],
-            }
-          ],
-      }
-     },
+             checks: []
+        }
+    },
 }
 </script>
+
+<style>
+    .md-ripple {
+        z-index: 0;
+    }
+</style>
