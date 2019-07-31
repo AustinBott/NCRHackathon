@@ -45,19 +45,15 @@
 import hook from './hook'
 import handler from './handler'
 export default {
+    created(){
+        console.log(this.$route.params);
+        
+        this.check = this.$route.params.checkName;
+    },
     props:{
         isSelected: Boolean,
         selectedAgentId: ['selectedAgentId'],
-        check:{
-            name: String,
-            metaData:{
-                name: String,
-            nameSpace: String
-            },
-            subscriptions:[],
-            hooks:[],
-            handlers:[],
-        }
+        check: Object
     },
     components:{
         hook,
