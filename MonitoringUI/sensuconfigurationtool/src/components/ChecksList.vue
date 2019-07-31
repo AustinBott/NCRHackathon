@@ -12,7 +12,16 @@
         </div>
         <div id="checks">
             <div v-for="(check, index) in checks" v-bind:key="index">
-                <div class="check" :class="{selected: selected === index}" v-on:click="SelectCheck(index)">
+            <md-card md-with-hover>
+                <md-card-header>
+                    <div class="md-title">{{check.metadata.namespace}}</div>
+                </md-card-header>
+                <div id="buttonControl">
+                <md-button class="md-primary" v-on:click.stop="EditCheck(check)">Edit</md-button>
+                <md-button class="md-accent" v-on:click.stop="RemoveCheck(index)">Remove</md-button>
+            </div>    
+            </md-card> 
+                    <!-- <div class="check" :class="{selected: selected === index}" v-on:click="SelectCheck(index)">
                     <div class="rows">
                         <div class="row">
                             <p>{{check.name}}</p>
@@ -27,7 +36,7 @@
                     <div id="buttonControl">
                         <md-button class="md-primary" v-on:click.stop="EditCheck(check)">Edit</md-button>
                         <md-button class="md-accent" v-on:click.stop="RemoveCheck(index)">Remove</md-button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
