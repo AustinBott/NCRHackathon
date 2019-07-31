@@ -1,38 +1,42 @@
 <template>
     <div class = "card" :class="{selected:isSelected}">
         <div class = "table">
-            <div class = "row header"> 
-               <div class = "item"> Check: {{check.name}}</div>
+            <div class = "row"> 
+               <div class="item title">Check:</div>
+                <input class = "item">
             </div>
             <div class = "row">
-                <div class = "item">{{check.metaData.namespace}}</div>
-                <div class = "item">{{check.metaData.name}}</div>
+                <div class="item title">Metadata:</div>
+                <input class = "item" v-model="check.metaData.namespace">
+                <input class = "item" v-model="check.metaData.name">
             </div>
             <div class="row">
-                <div class = "item">{{check.subscriptions}}</div>
+                <div class="item title">Subscrptions:</div>
+                <div class="item" v-for="(subscription, index) in check.subscriptions" v-bind:key="index">
+                    <input v-model="subscription.name">
+                </div>
             </div>
-            <div class = "row header"> 
+            <div class = "row"> 
                <div class = "item"> Hooks: </div>
             </div>
            <div class="row">
                 <div class = "item"
-                v-for="hook in check.hooks" v-bind:key="hook.name">
+                v-for="(hook, index) in check.hooks" v-bind:key="index">
                     <hook
                     v-bind:hook="hook"/>
                 </div>
             </div>
-            <div class = "row header"> 
+            <div class = "row"> 
                <div class = "item"> Handlers: </div>
             </div>
             <div class="row">
                 <div class = "item"
-                v-for="handler in check.handlers" v-bind:key="handler.name">
+                v-for="(handler,index) in check.handlers" v-bind:key="index">
                     <handler
                     v-bind:handler="handler"/>
                 </div>  
             </div>
         </div>
-        <input v-model="check.name" lazy>
     </div>
 </template>
 
@@ -86,16 +90,14 @@ export default {
         display: flex;
         flex-direction: row;
         margin: 2px;
-        overflow: hidden;
-        justify-content: space-evenly;
+        padding: 0px 5px;
+        flex-wrap: wrap;
+        justify-content: left;
     }
     .item{
         margin: 5px;
         padding: 5px;
         font: 2px;
         overflow: hidden;
-    }
-    .header{
-        justify-content: left;
     }
 </style>

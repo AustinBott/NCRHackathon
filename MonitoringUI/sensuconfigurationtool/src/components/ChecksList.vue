@@ -50,10 +50,16 @@ export default {
                     }
                 ],
                 hooks:[{
-                        name: 'hook1'
+                        name: 'hook2'
                     },
                     {
                         name: 'hook3'
+                    },
+                    {
+                        name: 'hook4'
+                    },
+                    {
+                        name: 'hook5'
                     }],
                 handlers:[{
                         name: 'handler5'

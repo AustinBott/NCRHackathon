@@ -2,7 +2,7 @@
     <div class = "card">
         <div class = "table">
             <div class = "row header"> 
-               <div class = "item"> Hook: {{hook.name}}</div>
+               <input class = "item" v-model="hook.name">
             </div>
         </div>
     </div>
