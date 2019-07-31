@@ -21,7 +21,7 @@ type Response struct {
 
 
 func main() {
-    response, err := http.Get("http://localhost:61325/api/db/demo_jj185175/CSO_Marche_22-8/printer_status")
+    response, err := http.Get("http://billgatespersonalcomputer.centralus.cloudapp.azure.com:8080/api/db/demo_jj185175/CSO_Marche_22-8/printer_status")
     
     if err != nil {
         fmt.Print(err.Error())
