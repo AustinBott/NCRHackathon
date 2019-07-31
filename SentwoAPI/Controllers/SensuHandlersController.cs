@@ -37,5 +37,17 @@ namespace SentwoAPI.Controllers
         }
 
 
+        [HttpPost()]
+        public ActionResult<object> Post(Models.SensuHandler handler)
+        {
+            string authToken = new SensuAuthenticationController().GetAuthenticationToken();
+            var client = new RestClient(url);
+            client.AddDefaultHeader("Authorization", "Bearer " + authToken);
+            var test = handler;
+            var request = new RestRequest("", Method.GET);
+            var response = client.Execute(request);
+            return this.Content(response.Content, "application/json");
+        }
+
     }
 }
