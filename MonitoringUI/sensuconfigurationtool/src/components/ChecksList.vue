@@ -4,12 +4,6 @@
             <h4>Available Checks</h4>
             <md-button class="md-primary" v-on:click="NewCheck()">Add</md-button>
         </div>
-        <div v-if="agentId > 0">
-            <p> Agent {{agentId}} selected </p>
-        </div>
-        <div v-else>
-            <p> No agent selected </p>
-        </div>
         <div id="checks">
             <div v-for="(check, index) in checks" v-bind:key="index">
             <md-card md-with-hover>
@@ -46,7 +40,7 @@
 
 import check from './component-items/check'
 import EditCheck from './EditCheck'
-import { getChecks } from '../api/checkAPI';
+import { getChecks, createCheck, deleteCheck } from '../api/checkAPI';
 
 
 export default {
@@ -99,9 +93,8 @@ export default {
             )
             this.selected = undefined;
         },
-        RemoveCheck(){
-            var checks = this.checks;
-            this.checks.splice(this.selected, 1);
+        RemoveCheck: function(check){
+            deleteCheck(check.name);
             this.selected = undefined;
         },
         SelectCheck: function(checkIndex){

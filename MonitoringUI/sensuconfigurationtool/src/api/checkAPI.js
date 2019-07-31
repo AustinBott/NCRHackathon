@@ -38,7 +38,6 @@ export function createCheck(check) {
             console.log(body);
         });
 }
-
 export function editCheck(command, subscriptions, interval, publish, handlers, metadata) {
     let check = {
         "command": command,
