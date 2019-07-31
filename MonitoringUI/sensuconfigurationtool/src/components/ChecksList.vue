@@ -50,10 +50,14 @@ export default {
     },
     methods:{
         NewCheck(){
+            if (!this.checks){
+                this.checks = [];
+            }
+
             this.checks = this.checks.concat(
                 {
                 name: 'newCheck' + this.newCheckCount++,
-                metaData:{
+                metadata:{
                     name: 'newCheck',
                     namespace: 'newChecknameSpace'
                 },
