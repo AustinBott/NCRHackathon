@@ -23,6 +23,12 @@ namespace SentwoAPI.Controllers
             _client = new ElasticClient(settings);
         }
 
+        [HttpGet("test")]
+        public String Test()
+        {
+            return "WORKING";
+        }
+
         //TODO: FIX RETURN STATEMENT
         //TODO: ALSO POST TO SENSU BACKEND
         [HttpPost]
