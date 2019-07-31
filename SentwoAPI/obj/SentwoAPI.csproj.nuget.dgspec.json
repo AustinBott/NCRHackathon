@@ -1,24 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yc185038\\source\\NCRHackathon\\SentwoAPI\\SentwoAPI.csproj": {}
+    "C:\\Projects\\Hackathon\\SentwoAPI\\SentwoAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yc185038\\source\\NCRHackathon\\SentwoAPI\\SentwoAPI.csproj": {
+    "C:\\Projects\\Hackathon\\SentwoAPI\\SentwoAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yc185038\\source\\NCRHackathon\\SentwoAPI\\SentwoAPI.csproj",
+        "projectUniqueName": "C:\\Projects\\Hackathon\\SentwoAPI\\SentwoAPI.csproj",
         "projectName": "SentwoAPI",
-        "projectPath": "C:\\Users\\yc185038\\source\\NCRHackathon\\SentwoAPI\\SentwoAPI.csproj",
-        "packagesPath": "C:\\Users\\yc185038\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yc185038\\source\\NCRHackathon\\SentwoAPI\\obj\\",
+        "projectPath": "C:\\Projects\\Hackathon\\SentwoAPI\\SentwoAPI.csproj",
+        "packagesPath": "C:\\Users\\AB185416\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Hackathon\\SentwoAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\yc185038\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\AB185416\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"

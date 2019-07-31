@@ -25,20 +25,10 @@ export function getChecks(checkName) {
 }
 
 
-export function createCheck(command, subscriptions, interval, publish, handlers, metadata) {
-    let check = {
-        "command": command,
-        "subscriptions": subscriptions,
-        "interval": interval,
-        "publish": publish,
-        "handlers": handlers,
-        "metadata": metadata
-    };
-
+export function createCheck(check) {
     axios({
         method: 'post',
-        headers: { "Authorization": "Bearer " + getAuthenticationToken(), "content-type": "application/json" },
-        url: URL + "/checks",
+        url: "http://localhost:59193/api/sensuchecks",
         data: check
     })
         .then(function (error) {

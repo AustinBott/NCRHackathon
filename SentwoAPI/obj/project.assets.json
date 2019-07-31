@@ -8278,7 +8278,7 @@
       ]
     },
     "Newtonsoft.Json/11.0.2": {
-      "sha512": "IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
+      "sha512": "znZGbws7E4BA9jxNZ7FuiIRI3C9hrgatVQSTKhIYZYNOud4M5VfGlTYi6RdYO5sQrebFuF/g9UEV3hOxDMXF6Q==",
       "type": "package",
       "path": "newtonsoft.json/11.0.2",
       "files": [
@@ -13204,24 +13204,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yc185038\\.nuget\\packages\\": {},
+    "C:\\Users\\AB185416\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yc185038\\source\\NCRHackathon\\SentwoAPI\\SentwoAPI.csproj",
+      "projectUniqueName": "C:\\Projects\\Hackathon\\SentwoAPI\\SentwoAPI.csproj",
       "projectName": "SentwoAPI",
-      "projectPath": "C:\\Users\\yc185038\\source\\NCRHackathon\\SentwoAPI\\SentwoAPI.csproj",
-      "packagesPath": "C:\\Users\\yc185038\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yc185038\\source\\NCRHackathon\\SentwoAPI\\obj\\",
+      "projectPath": "C:\\Projects\\Hackathon\\SentwoAPI\\SentwoAPI.csproj",
+      "packagesPath": "C:\\Users\\AB185416\\.nuget\\packages\\",
+      "outputPath": "C:\\Projects\\Hackathon\\SentwoAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\yc185038\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\AB185416\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
