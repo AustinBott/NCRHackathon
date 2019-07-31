@@ -15,19 +15,36 @@ namespace SentwoAPI.Controllers
     public class SensuEventsController : ControllerBase
     {
 
-        private const string URL = "https://sensuservice.preprod.ncrsaas.com/api/core/v2/namespaces/cso2_development/entities";
+        private const string URL = "https://sensuservice.preprod.ncrsaas.com/api/core/v2/namespaces/cso2_development/events";
 
         [HttpGet()]
+        public ActionResult<object> GetEvents() {
+            RestClient client = new RestClient(URL);
+
+            string authToken = new SensuAuthenticationController().GetAuthenticationToken();
+            client.AddDefaultHeader("Authorization", "Bearer " + authToken);
+            var request = new RestRequest("", Method.GET);
+            var response = client.Execute(request);
+
+            return response.Content;
+        }
+
+        [HttpGet("{entityName}")]
+        public ActionResult<object> GetEvents(string entityName) {
+            RestClient client = new RestClient(URL + "/" + entityName);
+
+            string authToken = new SensuAuthenticationController().GetAuthenticationToken();
+            client.AddDefaultHeader("Authorization", "Bearer " + authToken);
+            var request = new RestRequest("", Method.GET);
+            var response = client.Execute(request);
+
+            return response.Content;
+        }
+
+        [HttpGet("{entityName}/{checkName}")]
         public ActionResult<object> GetEvents(string entityName, string checkName)
         {
-            RestClient client;
-            if (string.IsNullOrEmpty(entityName)) {
-                client = new RestClient(URL);
-            } else if (string.IsNullOrEmpty(checkName)) {
-                client = new RestClient(URL + "/" + entityName);
-            } else {
-                client = new RestClient(URL + "/" + entityName + "/" + checkName);
-            }
+            RestClient client = new RestClient(URL + "/" + entityName + "/" + checkName);
 
             string authToken = new SensuAuthenticationController().GetAuthenticationToken();
             client.AddDefaultHeader("Authorization", "Bearer " + authToken);

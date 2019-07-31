@@ -39,9 +39,9 @@
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
                             <div class="item title">Hooks: </div>
-                            <div class="item"
-                                 v-for="(hook, index) in check.hooks" v-bind:key="index">
+                            <div class="item" v-for="(hook, index) in check.hooks" v-bind:key="index">
                                 <hook v-bind:hook="hook" />
+                                <md-input />
                             </div>
                         </md-field>
                     </div>
