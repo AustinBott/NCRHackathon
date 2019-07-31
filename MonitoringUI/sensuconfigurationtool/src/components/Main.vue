@@ -17,7 +17,7 @@
       </div>
 
       <div id="footer" v-if="loggedIn" class="footer">
-        <router-link to="/logout">Log out</router-link>
+        <FooterBar />
       </div>    
     </div>
 </template>
@@ -26,6 +26,7 @@
 import AvailableAgentList from './AvailableAgentList'
 import Login from './Login'
 import Navigation from "./Navigation"
+import FooterBar from "./FooterBar"
 
 export default {
   props: ['loggedIn'],
@@ -43,7 +44,8 @@ export default {
   components: {
       AvailableAgentList,
       Login,
-      Navigation
+      Navigation,
+      FooterBar
   },
   methods: {
     onAgentChanged(selectedAgentName) { 
