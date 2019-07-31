@@ -1,5 +1,5 @@
 <template>
-    <div class = "card" :class="{selected:isSelected}">
+    <div id="check" class = "card" :class="{selected:isSelected}">
         <div class = "table">
             <div class = "row"> 
                <div class="item title">Check:</div>
@@ -7,8 +7,8 @@
             </div>
             <div class = "row">
                 <div class="item title">Metadata:</div>
-                <input class = "item" v-model="check.metaData.namespace">
-                <input class = "item" v-model="check.metaData.name">
+                <input class = "item" v-model="check.metadata.namespace">
+                <input class = "item" v-model="check.metadata.name">
             </div>
             <div class="row">
                 <div class="item title">Subscrptions:</div>

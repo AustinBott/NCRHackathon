@@ -7,24 +7,22 @@ function getAuthenticationToken() {
     return authenticationHandler.authToken;
 }
 
-//if a check name is not provided, this endpoint will retrieve the full checks list.
-export function getCheck(checkName) {
-    let checkUrl = URL + "/checks"
+export function getChecks(checkName) {
+    var checkUrl = "https://localhost:5001/api/sensuchecks";
     if (checkName)
         checkUrl += "/" + checkName;
 
-    axios({
+    return axios({
         method: 'get',
-        headers: { "Authorization": "Bearer " + getAuthenticationToken(), "content-type": "application/json" },
         url: checkUrl,
     })
-        .then(function (response) {
-            console.log(response.data);
-        })
-        .catch(function (error) {
-            console.log(error); //later change to UI error message
-        });
-}//getCheckList()
+    .then(function (response) {
+        return response.data;
+    })
+    .catch(function (error) {
+        console.log(error); //later change to UI error message
+    });
+}
 
 
 export function createCheck(command, subscriptions, interval, publish, handlers, metadata) {

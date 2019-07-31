@@ -21,44 +21,6 @@ import {getEntities} from '../api/entitiesAPI';
   export default {
     data () {
       return {
-        items: [
-          {
-            name : 1,
-            namespace : 'namespace1',
-            lastUpdate : '17:15:20',
-            label : 'eventdata'
-          },
-          {
-            name : 2,
-            namespace : 'namespace2',
-            lastUpdate : '17:dsfsaf',
-            label : 'eventdsfasdfata'
-          },
-          {
-            name : 3,
-            namespace : 'namespace3',
-            lastUpdate : '17:1sdfafda5:20',
-            label : 'eventdasfdasdfta'
-          },
-                    {
-            name : 4,
-            namespace : 'namespace3',
-            lastUpdate : '17:1sdfafda5:20',
-            label : 'eventdasfdasdfta'
-          },
-                    {
-            name : 5,
-            namespace : 'namespace3',
-            lastUpdate : '17:1sdfafda5:20',
-            label : 'eventdasfdasdfta'
-          },
-                    {
-            name : 6,
-            namespace : 'namespace3',
-            lastUpdate : '17:1sdfafda5:20',
-            label : 'eventdasfdasdfta'
-          }
-          ],
           agents: []
       }
     },
