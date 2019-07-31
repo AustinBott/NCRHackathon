@@ -2,7 +2,7 @@
     <div id="main">
 
       <div id="header" v-if="loggedIn">
-        <Navigation :selectedAgentId="selectedAgentId" />
+        <Navigation :selectedAgentName="selectedAgentName" />
       </div>
 
       <div id="routingContainer" class="container">
@@ -31,14 +31,14 @@ export default {
   props: ['loggedIn'],
   data: function() {
     return {
-      selectedAgentId: 0
+      selectedAgentName: ""
     };
   },
   created() {
-    selectedAgentId: 0
+    selectedAgentName: ""
   },
   mounted: function() {
-    selectedAgentId: 0
+    selectedAgentName: ""
   },
   components: {
       AvailableAgentList,
@@ -46,9 +46,9 @@ export default {
       Navigation
   },
   methods: {
-    onAgentChanged(selectedAgentId) { 
-      this.selectedAgentId = selectedAgentId;
-      console.log(selectedAgentId);
+    onAgentChanged(selectedAgentName) { 
+      this.selectedAgentName = selectedAgentName;
+      console.log(selectedAgentName);
     }
   }
     

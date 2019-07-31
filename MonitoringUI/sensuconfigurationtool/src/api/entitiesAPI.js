@@ -8,24 +8,17 @@ function getAuthenticationToken() {
 }
 
 export function getEntities() {
-    let entitiesUrl = URL + "/entities";
+    let entitiesUrl ="https://localhost:5001/api/sensuentities"
     let entitiesList = [];
 
-    axios({
+    return axios({
         method: 'get',
-        headers: { 
-            "Authorization": "Bearer " + getAuthenticationToken(), 
-            "content-type": "application/json",
-            "Origin": "*"},
         url: entitiesUrl,
     })
     .then(function (response) {
-        entitiesList = response;
-        console.log(response.data);
+        return response.data;
     })
     .catch(function (error) {
         console.log(error); //later change to UI error message
     });
-
-    return entitiesList;
 }
