@@ -28,7 +28,7 @@ func main() {
         os.Exit(1)
     }
 
-    responseData, err := ioutil.ReadAll(response.Body)
+    responseData, err := ioutil.ReadAll(response.Body
     if err != nil {
         log.Fatal(err)
     }

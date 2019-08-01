@@ -6,10 +6,8 @@
         </md-card-header>
 
         <md-card-content>
-          Namespace: {{agent.metadata.namespace}}
-        </md-card-content>
-        <md-card-content>
-          User: {{agent.user}}
+          <div class = "md-content">Namespace: {{agent.metadata.namespace}}</div>
+          <div class = "md-content">User: {{agent.user}}</div>
         </md-card-content>
     </md-card>
   </div>
