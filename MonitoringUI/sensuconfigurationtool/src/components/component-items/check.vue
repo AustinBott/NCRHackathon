@@ -10,7 +10,25 @@
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
                             <div class="item title">Check:</div>
-                            <md-input v-model="check.metadata.name" />
+                            <div class="item">{{check.metadata.name}} </div>
+                        </md-field>
+                        <md-field>
+                            <div class="item title">Namespace: </div>
+                            <div class="item">{{check.metadata.namespace}} </div>
+                        </md-field>
+                    </div>
+                </div>
+
+                <div class="md-layout md-gutter">
+                    <div class="md-layout-item md-small-size-100">
+                    </div>
+                </div>
+
+                <div class="md-layout md-gutter">
+                    <div class="md-layout-item md-small-size-100">
+                        <md-field>
+                            <div class="item title">Command: </div>
+                            <md-input class="item" v-model="check.command" />
                         </md-field>
                     </div>
                 </div>
@@ -18,8 +36,43 @@
                 <div class="md-layout md-gutter">
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
-                            <div class="item title">Metadata: </div>
-                            <md-input v-model="check.metadata.namespace" />
+                            <div class="item title">High Flap Threshold: </div>
+                            <md-input class="item" v-model="check.high_flap_threshold" />
+                        </md-field>
+                    </div>
+                </div>
+                <div class="md-layout md-gutter">
+                    <div class="md-layout-item md-small-size-100">
+                        <md-field>
+                            <div class="item title">Low Flap Threshold: </div>
+                            <md-input class="item" v-model="check.low_flap_threshold" />
+                        </md-field>
+                    </div>
+                </div>
+
+                <div class="md-layout md-gutter">
+                    <div class="md-layout-item md-small-size-100">
+                        <md-field>
+                            <div class="item title">Intervals: </div>
+                            <md-input class="item" v-model="check.interval" />
+                        </md-field>
+                    </div>
+                </div>
+
+                <div class="md-layout md-gutter">
+                    <div class="md-layout-item md-small-size-100">
+                        <md-field>
+                            <div class="item title">publish: </div>
+                            <md-input class="item" v-model="check.publish" />
+                        </md-field>
+                    </div>
+                </div>
+
+                <div class="md-layout md-gutter">
+                    <div class="md-layout-item md-small-size-100">
+                        <md-field>
+                            <div class="item title">Runtime Assets: </div>
+                            <md-input class="item" v-model="check.runtime_assets[0]" />
                         </md-field>
                     </div>
                 </div>
@@ -28,9 +81,25 @@
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
                             <div class="item title">Subscriptions: </div>
-                            <div v-for="(subscription, index) in check.subscriptions" v-bind:key="index">
-                                <md-input v-model="subscription.name" />
-                            </div>
+                            <md-input class="item" v-model="check.subscriptions[0]" />
+                        </md-field>
+                    </div>
+                </div>
+
+                <div class="md-layout md-gutter">
+                    <div class="md-layout-item md-small-size-100">
+                        <md-field>
+                            <div class="item title">Proxy Entity Name: </div>
+                            <md-input class="item" v-model="check.proxy_entity_name" />
+                        </md-field>
+                    </div>
+                </div>
+
+                <div class="md-layout md-gutter">
+                    <div class="md-layout-item md-small-size-100">
+                        <md-field>
+                            <div class="item title">Check Hooks </div>
+                            <md-input class="item" v-model="check.check_hooks" />
                         </md-field>
                     </div>
                 </div>

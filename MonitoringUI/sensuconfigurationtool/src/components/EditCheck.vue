@@ -26,7 +26,9 @@ export default {
     },
     methods:{
         SaveCheck(){
-            editCheck();
+            console.log("EDIT", this.check);
+            editCheck(this.check);
+            this.$router.go(-1);
         }
     },
     components:{

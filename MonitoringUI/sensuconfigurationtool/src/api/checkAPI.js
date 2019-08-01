@@ -38,16 +38,7 @@ export function createCheck(check) {
             console.log(body);
         });
 }
-export function editCheck(command, subscriptions, interval, publish, handlers, metadata) {
-    let check = {
-        "command": command,
-        "subscriptions": subscriptions,
-        "interval": interval,
-        "publish": publish,
-        "handlers": handlers,
-        "metadata": metadata
-    };
-
+export function editCheck(check) {
     axios({
         method: 'put',
         url: "http://localhost:58736/api/sensuchecks",
