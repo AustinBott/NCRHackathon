@@ -58,45 +58,16 @@ export default {
                 this.checks = [];
             }
 
-            this.checks = this.checks.concat(
-                {
-                name: 'newCheck' + this.newCheckCount++,
-                metadata:{
-                    name: 'newCheck',
-                    namespace: 'newChecknameSpace'
-                },
-                subscriptions:[{
-                        name: 'sub1'
-                    },
-                    {
-                        name: 'sub2'
-                    }
-                ],
-                hooks:[{
-                        name: 'hook2'
-                    },
-                    {
-                        name: 'hook3'
-                    },
-                    {
-                        name: 'hook4'
-                    },
-                    {
-                        name: 'hook5'
-                    }],
-                handlers:[{
-                        name: 'handler5'
-                    },
-                    {
-                        name: 'handler8'
-                    }],
-            }
-            )
+            let check = {"command":"check_cpu --warning 90 --critical 95","handlers":["slack","elasticsearch_event_logging"],"high_flap_threshold":60,"interval":60,"low_flap_threshold":20,"publish":false,"runtime_assets":["nagios-foundation-windows"],"subscriptions":["windows"],"proxy_entity_name":"","check_hooks":null,"stdin":false,"subdue":null,"ttl":0,"timeout":0,"round_robin":false,"output_metric_format":"nagios_perfdata","output_metric_handlers":["elasticsearch"],"env_vars":null,"metadata":{"name":'newCheck' + this.checks.length,"namespace":"cso2_development"}};
+            createCheck(check);
+
             this.selected = undefined;
+            this.GetChecks();
         },
-        RemoveCheck: function(check){
-            deleteCheck(check.name);
+        RemoveCheck: function(name){
+            deleteCheck(name);
             this.selected = undefined;
+            this.GetChecks();
         },
         SelectCheck: function(checkIndex){
             if(this.selected != checkIndex){
@@ -109,14 +80,16 @@ export default {
         EditCheck: function(check){
             const newCheck = JSON.stringify(check);
             this.$router.push({path: `/checkslist/editcheck/${newCheck}`});
+        },
+        GetChecks(){
+            getChecks().then((data) => {
+            this.checks = data;
+            });
+
         }
     },
     created() {
-        getChecks().then((data) => {
-            this.checks = data;
-            console.log(data);
-        });
-        console.log(this.checks);
+        this.GetChecks();
     },
     data () {
         return {

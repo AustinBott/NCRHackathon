@@ -73,8 +73,8 @@ namespace SentwoAPI.Controllers
             return response.Content;
         }
 
-        [HttpDelete()]
-        public ActionResult<object> DeleteCheck([FromBody] string name) {
+        [HttpDelete("{name}")]
+        public ActionResult<object> DeleteCheck(string name) {
 
             RestClient client = new RestClient(URL + "/" + name);
 

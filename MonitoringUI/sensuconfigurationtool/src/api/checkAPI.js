@@ -28,7 +28,7 @@ export function getChecks(checkName) {
 export function createCheck(check) {
     axios({
         method: 'post',
-        url: "http://localhost:59193/api/sensuchecks",
+        url: "http://localhost:58736/api/sensuchecks",
         data: check
     })
         .then(function (error) {
@@ -50,8 +50,7 @@ export function editCheck(command, subscriptions, interval, publish, handlers, m
 
     axios({
         method: 'put',
-        headers: { "Authorization": "Bearer " + getAuthenticationToken(), "content-type": "application/json" },
-        url: URL + "/checks/" + metadata.name,
+        url: "http://localhost:58736/api/sensuchecks",
         data: check
     })
         .then(function (error) {
@@ -66,8 +65,10 @@ export function editCheck(command, subscriptions, interval, publish, handlers, m
 export function deleteCheck(name) {
     axios({
         method: 'delete',
-        headers: { "Authorization": "Bearer " + getAuthenticationToken(), "content-type": "application/json" },
-        url: URL + "/checks/" + name,
+        url: "http://localhost:58736/api/sensuchecks/" + name,
+        headers: {
+            "Content-Type": "application/json"
+        },
     })
         .then(function (error) {
             console.log(error);
