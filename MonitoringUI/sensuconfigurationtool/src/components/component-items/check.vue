@@ -37,7 +37,7 @@
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
                             <div class="item title">High Flap Threshold: </div>
-                            <md-input class="item" v-model="check.high_flap_threshold" />
+                            <md-input type="number" class="item" v-model.number="check.high_flap_threshold" />
                         </md-field>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
                             <div class="item title">Low Flap Threshold: </div>
-                            <md-input class="item" v-model="check.low_flap_threshold" />
+                            <md-input type="number" class="item" v-model.number="check.low_flap_threshold" />
                         </md-field>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
                             <div class="item title">Intervals: </div>
-                            <md-input class="item" v-model="check.interval" />
+                            <md-input type="number" class="item" v-model.number="check.interval" />
                         </md-field>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
                             <div class="item title">Publish: </div>
-                            <md-input class="item" v-model="check.publish" />
+                            <md-checkbox v-model="check.publish"></md-checkbox>
                         </md-field>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
                             <div class="item title">Standard In: </div>
-                            <md-input class="item" v-model="check.stdin" />
+                            <md-checkbox v-model="check.stdin"></md-checkbox>
                         </md-field>
                     </div>
                 </div>
@@ -126,7 +126,7 @@
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
                             <div class="item title">TTL: </div>
-                            <md-input class="item" v-model="check.ttl" />
+                            <md-input type="number" class="item" v-model.number="check.ttl" />
                         </md-field>
                     </div>
                 </div>
@@ -135,7 +135,7 @@
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
                             <div class="item title">Timeout: </div>
-                            <md-input class="item" v-model="check.timeout" />
+                            <md-input type="number" class="item" v-model.number="check.timeout" />
                         </md-field>
                     </div>
                 </div>
@@ -144,7 +144,7 @@
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
                             <div class="item title">Round Robin: </div>
-                            <md-input class="item" v-model="check.round_robin" />
+                            <md-checkbox v-model="check.round_robin"></md-checkbox>
                         </md-field>
                     </div>
                 </div>
