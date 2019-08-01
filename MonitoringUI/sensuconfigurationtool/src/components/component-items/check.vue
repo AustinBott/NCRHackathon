@@ -107,6 +107,78 @@
                 <div class="md-layout md-gutter">
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
+                            <div class="item title">stdin </div>
+                            <md-input class="item" v-model="check.stdin" />
+                        </md-field>
+                    </div>
+                </div>
+
+                <div class="md-layout md-gutter">
+                    <div class="md-layout-item md-small-size-100">
+                        <md-field>
+                            <div class="item title">Subdue </div>
+                            <md-input class="item" v-model="check.subdue" />
+                        </md-field>
+                    </div>
+                </div>
+
+                <div class="md-layout md-gutter">
+                    <div class="md-layout-item md-small-size-100">
+                        <md-field>
+                            <div class="item title">ttl </div>
+                            <md-input class="item" v-model="check.ttl" />
+                        </md-field>
+                    </div>
+                </div>
+
+                <div class="md-layout md-gutter">
+                    <div class="md-layout-item md-small-size-100">
+                        <md-field>
+                            <div class="item title">Timeout </div>
+                            <md-input class="item" v-model="check.timeout" />
+                        </md-field>
+                    </div>
+                </div>
+
+                <div class="md-layout md-gutter">
+                    <div class="md-layout-item md-small-size-100">
+                        <md-field>
+                            <div class="item title">Round Robin </div>
+                            <md-input class="item" v-model="check.round_robin" />
+                        </md-field>
+                    </div>
+                </div>
+
+                <div class="md-layout md-gutter">
+                    <div class="md-layout-item md-small-size-100">
+                        <md-field>
+                            <div class="item title">Output Metric Format</div>
+                            <md-input class="item" v-model="check.output_metric_format" />
+                        </md-field>
+                    </div>
+                </div>
+
+                <div class="md-layout md-gutter">
+                    <div class="md-layout-item md-small-size-100">
+                        <md-field>
+                            <div class="item title">Output Metric Handlers</div>
+                            <md-input class="item" v-model="check.output_metric_handlers[0]" />
+                        </md-field>
+                    </div>
+                </div>
+
+                <div class="md-layout md-gutter">
+                    <div class="md-layout-item md-small-size-100">
+                        <md-field>
+                            <div class="item title">Environment Variables</div>
+                            <md-input class="item" v-model="check.env_vars" />
+                        </md-field>
+                    </div>
+                </div>
+
+                <div class="md-layout md-gutter">
+                    <div class="md-layout-item md-small-size-100">
+                        <md-field>
                             <div class="item title">Hooks: </div>
                             <div class="item" v-for="(hook, index) in check.hooks" v-bind:key="index">
                                 <hook v-bind:hook="hook" />
