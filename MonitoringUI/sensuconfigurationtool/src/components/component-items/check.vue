@@ -62,7 +62,7 @@
                 <div class="md-layout md-gutter">
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
-                            <div class="item title">publish: </div>
+                            <div class="item title">Publish: </div>
                             <md-input class="item" v-model="check.publish" />
                         </md-field>
                     </div>
@@ -98,7 +98,7 @@
                 <div class="md-layout md-gutter">
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
-                            <div class="item title">Check Hooks </div>
+                            <div class="item title">Check Hooks: </div>
                             <md-input class="item" v-model="check.check_hooks" />
                         </md-field>
                     </div>
@@ -107,7 +107,7 @@
                 <div class="md-layout md-gutter">
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
-                            <div class="item title">stdin </div>
+                            <div class="item title">Standard In: </div>
                             <md-input class="item" v-model="check.stdin" />
                         </md-field>
                     </div>
@@ -116,7 +116,7 @@
                 <div class="md-layout md-gutter">
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
-                            <div class="item title">Subdue </div>
+                            <div class="item title">Subdue: </div>
                             <md-input class="item" v-model="check.subdue" />
                         </md-field>
                     </div>
@@ -125,7 +125,7 @@
                 <div class="md-layout md-gutter">
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
-                            <div class="item title">ttl </div>
+                            <div class="item title">TTL: </div>
                             <md-input class="item" v-model="check.ttl" />
                         </md-field>
                     </div>
@@ -134,7 +134,7 @@
                 <div class="md-layout md-gutter">
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
-                            <div class="item title">Timeout </div>
+                            <div class="item title">Timeout: </div>
                             <md-input class="item" v-model="check.timeout" />
                         </md-field>
                     </div>
@@ -143,7 +143,7 @@
                 <div class="md-layout md-gutter">
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
-                            <div class="item title">Round Robin </div>
+                            <div class="item title">Round Robin: </div>
                             <md-input class="item" v-model="check.round_robin" />
                         </md-field>
                     </div>
@@ -152,7 +152,7 @@
                 <div class="md-layout md-gutter">
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
-                            <div class="item title">Output Metric Format</div>
+                            <div class="item title">Output Metric Format: </div>
                             <md-input class="item" v-model="check.output_metric_format" />
                         </md-field>
                     </div>
@@ -161,7 +161,7 @@
                 <div class="md-layout md-gutter">
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
-                            <div class="item title">Output Metric Handlers</div>
+                            <div class="item title">Output Metric Handlers: </div>
                             <md-input class="item" v-model="check.output_metric_handlers[0]" />
                         </md-field>
                     </div>
@@ -170,7 +170,7 @@
                 <div class="md-layout md-gutter">
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
-                            <div class="item title">Environment Variables</div>
+                            <div class="item title">Environment Variables: </div>
                             <md-input class="item" v-model="check.env_vars" />
                         </md-field>
                     </div>
