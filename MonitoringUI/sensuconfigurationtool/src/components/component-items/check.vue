@@ -1,26 +1,29 @@
 <template>
     <form novalidate class="md-layout">
         <md-card-content class="md-layout-item md-size-50 md-small-size-100">
-            <md-card-header>
-                <div class="md-title">Edit Check</div>
-            </md-card-header>
-
             <md-card-content>
                 <div class="md-layout md-gutter">
                     <div class="md-layout-item md-small-size-100">
-                        <md-field>
-                            <div class="item title">Check:</div>
-                            <div class="item">{{check.metadata.name}} </div>
-                        </md-field>
-                        <md-field>
-                            <div class="item title">Namespace: </div>
-                            <div class="item">{{check.metadata.namespace}} </div>
-                        </md-field>
-                    </div>
-                </div>
-
-                <div class="md-layout md-gutter">
-                    <div class="md-layout-item md-small-size-100">
+                        <div v-if="newCheck">
+                                <md-field>
+                                <div class="item title">Check:</div>
+                                <md-input class="item" v-model="check.metadata.name"/>
+                            </md-field>
+                            <md-field>
+                                <div class="item title">Namespace: </div>
+                                <md-input class="item" v-model="check.metadata.namespace"/>
+                            </md-field>
+                        </div>
+                        <div v-else>
+                            <md-field>
+                                <div class="item title">Check:</div>
+                                <div class="item">{{check.metadata.name}} </div>
+                            </md-field>
+                            <md-field>
+                                <div class="item title">Namespace: </div>
+                                <div class="item">{{check.metadata.namespace}} </div>
+                            </md-field>
+                        </div>
                     </div>
                 </div>
 
@@ -72,7 +75,9 @@
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
                             <div class="item title">Runtime Assets: </div>
-                            <md-input class="item" v-model="check.runtime_assets[0]" />
+                            <div v-for="(rta, index) in check.runtime_assets" v-bind:key="index">
+                                <md-input class="item" v-model="check.runtime_assets[index]" />
+                            </div>
                         </md-field>
                     </div>
                 </div>
@@ -81,7 +86,9 @@
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
                             <div class="item title">Subscriptions: </div>
-                            <md-input class="item" v-model="check.subscriptions[0]" />
+                            <div v-for="(subscription, index) in check.subscriptions" v-bind:key="index">
+                                <md-input class="item" v-model="check.subscriptions[index]" />
+                            </div>
                         </md-field>
                     </div>
                 </div>
@@ -162,7 +169,9 @@
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
                             <div class="item title">Output Metric Handlers: </div>
-                            <md-input class="item" v-model="check.output_metric_handlers[0]" />
+                            <div v-for="(omh, index) in check.output_metric_handlers" v-bind:key="index">
+                                <md-input class="item" v-model="check.output_metric_handlers[index]" />
+                            </div>
                         </md-field>
                     </div>
                 </div>
@@ -180,9 +189,8 @@
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
                             <div class="item title">Hooks: </div>
-                            <div class="item" v-for="(hook, index) in check.hooks" v-bind:key="index">
-                                <hook v-bind:hook="hook" />
-                                <md-input />
+                            <div v-for="(hook, index) in check.hooks" v-bind:key="index">
+                                <md-input class="item" v-model="check.hooks[index]" />
                             </div>
                         </md-field>
                     </div>
@@ -192,11 +200,9 @@
                     <div class="md-layout-item md-small-size-100">
                         <md-field>
                             <div class="item title">Handlers: </div>
-                            <div class = "item" v-for="(handler,index) in check.handlers" v-bind:key="index">
-                                <handler v-bind:handler="handler"/>
+                            <div v-for="(handler, index) in check.handlers" v-bind:key="index">
+                                <md-input class="item" v-model="check.handlers[index]" />
                             </div>
-                            <!--<md-input />
-                            <md-input />-->
                         </md-field>
                     </div>
                 </div>
@@ -204,48 +210,9 @@
             </md-card-content>
 
         </md-card-content>
-    </form> 
-
-
-    <!--<div id="check" class = "card" :class="{selected:isSelected}">
-        <div class = "table">
-            <div class = "row">
-               <div class="item title">Check:</div>
-                <input class = "item">
-            </div>
-            <div class = "row">
-                <div class="item title">Metadata:</div>
-                <input class = "item" v-model="check.metadata.namespace">
-                <input class = "item" v-model="check.metadata.name">
-            </div>
-            <div class="row">
-                <div class="item title">Subscrptions:</div>
-                <div class="item" v-for="(subscription, index) in check.subscriptions" v-bind:key="index">
-                    <input v-model="subscription.name">
-                </div>
-            </div>
-            <div class = "row">
-               <div class = "item"> Hooks: </div>
-            </div>
-           <div class="row">
-                <div class = "item"
-                v-for="(hook, index) in check.hooks" v-bind:key="index">
-                    <hook
-                    v-bind:hook="hook"/>
-                </div>
-            </div>
-            <div class = "row">
-               <div class = "item"> Handlers: </div>
-            </div>
-            <div class="row">
-                <div class = "item"
-                v-for="(handler,index) in check.handlers" v-bind:key="index">
-                    <handler
-                    v-bind:handler="handler"/>
-                </div>
-            </div>
+        <div class = "blank">
         </div>
-    </div>-->
+    </form> 
 </template>
 
 
@@ -256,7 +223,8 @@ export default {
     props:{
         isSelected: Boolean,
         selectedAgentId: ['selectedAgentId'],
-        check: Object
+        check: Object,
+        newCheck: Boolean
     },
     components:{
         hook,
@@ -297,6 +265,9 @@ export default {
         margin: 5px;
         padding: 5px;
         font: 2px;
-        overflow: hidden;
+    }
+
+    .blank{
+        padding:30px;   
     }
 </style>

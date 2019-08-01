@@ -1,11 +1,14 @@
 <template>
     <div>
         <div class="header">
-            <h4>Editing Check</h4>
+            <md-card-header>
+                <div class="md-title">Edit Check</div>
+            </md-card-header>
             <md-button class="md-primary" v-on:click="SaveCheck()">Save</md-button>
         </div>
         <check
         v-bind:check="check"
+        v-bind:newCheck='false'
         />
     </div>
 </template>

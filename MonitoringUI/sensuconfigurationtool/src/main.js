@@ -20,6 +20,7 @@ import AvailableAgentList from './components/AvailableAgentList.vue'
 import AgentDashboard from './components/AgentDashboard.vue'
 import ChecksList from './components/ChecksList.vue'
 import EditCheck from './components/EditCheck.vue'
+import AddCheck from './components/AddCheck.vue'
 
 import Login from './components/Login.vue'
 
@@ -42,6 +43,7 @@ const router = new VueRouter({
     { path: '/agent/dashboard/:agentId', component: AgentDashboard, beforeEnter: requireAuth, props: true },
     { path: '/checkslist/', component: ChecksList, beforeEnter: requireAuth, props: true },
     { path: '/checkslist/editcheck/:checkName', component: EditCheck, beforeEnter: requireAuth, props: true },
+    { path: '/checkslist/addcheck', component: AddCheck, beforeEnter: requireAuth, props: true },
     { path: '/checkslist/:agentId', component: ChecksList, beforeEnter: requireAuth, props: true },
     { path: '/login', component: Login },
     { path: '/', component: AvailableAgentList, beforeEnter: requireAuth },

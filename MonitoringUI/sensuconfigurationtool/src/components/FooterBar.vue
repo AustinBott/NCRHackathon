@@ -17,7 +17,7 @@
 <style>
     .phone-viewport {
         width: 100%;
-        height: 200px;
+        height: 100px;
         bottom: 0;
         left: 0;
         display: inline-flex;
