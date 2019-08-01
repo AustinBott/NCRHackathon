@@ -76,6 +76,8 @@ export default {
             }
         },
         EditCheck: function(check){
+            console.log(check);
+
             const newCheck = JSON.stringify(check);
             this.$router.push({path: `/checkslist/editcheck/${newCheck}`});
         },

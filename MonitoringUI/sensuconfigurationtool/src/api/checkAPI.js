@@ -28,7 +28,7 @@ export function getChecks(checkName) {
 export function createCheck(check) {
     axios({
         method: 'post',
-        url: "http://localhost:58736/api/sensuchecks",
+        url: "http://localhost:61184/api/sensuchecks",
         data: check
     })
         .then(function (error) {
@@ -41,7 +41,7 @@ export function createCheck(check) {
 export function editCheck(check) {
     axios({
         method: 'put',
-        url: "http://localhost:58736/api/sensuchecks",
+        url: "http://localhost:61184/api/sensuchecks",
         data: check
     })
         .then(function (error) {
@@ -56,7 +56,7 @@ export function editCheck(check) {
 export function deleteCheck(name) {
     axios({
         method: 'delete',
-        url: "http://localhost:58736/api/sensuchecks/" + name,
+        url: "http://localhost:61184/api/sensuchecks/" + name,
         headers: {
             "Content-Type": "application/json"
         },
