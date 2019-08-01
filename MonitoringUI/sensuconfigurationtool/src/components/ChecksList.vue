@@ -58,7 +58,7 @@ export default {
                 this.checks = [];
             }
 
-            let check = {"command":"check_cpu --warning 90 --critical 95","handlers":["slack","elasticsearch_event_logging"],"high_flap_threshold":60,"interval":60,"low_flap_threshold":20,"publish":false,"runtime_assets":["nagios-foundation-windows"],"subscriptions":["windows"],"proxy_entity_name":"","check_hooks":null,"stdin":false,"subdue":null,"ttl":0,"timeout":0,"round_robin":false,"output_metric_format":"nagios_perfdata","output_metric_handlers":["elasticsearch"],"env_vars":null,"metadata":{"name":'New Check ' + this.checks.length,"namespace":"cso2_development"}};
+            let check = {"command":"check_cpu --warning 90 --critical 95","handlers":["slack","elasticsearch_event_logging"],"high_flap_threshold":60,"interval":60,"low_flap_threshold":20,"publish":false,"runtime_assets":["nagios-foundation-windows"],"subscriptions":["windows"],"proxy_entity_name":"","check_hooks":null,"stdin":false,"subdue":null,"ttl":0,"timeout":0,"round_robin":false,"output_metric_format":"nagios_perfdata","output_metric_handlers":["elasticsearch"],"env_vars":null,"metadata":{"name":'New_Check' + this.checks.length,"namespace":"cso2_development"}};
             createCheck(check);
 
             this.selected = undefined;
